@@ -1,0 +1,112 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureSvg {
+  height: 200px;
+  width: 200px;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(25%);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+.userStepsBg {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 2rem 1rem;
+  background: #f5f6fa;
+}
+.userStepsBg::before {
+  content: "";
+  animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, rgb(125, 54, 150) 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: absolute;
+  right: -50%;
+  top: 0;
+  z-index: -2;
+  border-radius: 16px;
+  transition: background 0.2s;
+}
+.userStepsBg::after {
+  content: "";
+  animation: slide 8s ease-in-out infinite alternate-reverse;
+  background-image: linear-gradient(-60deg, #6c3 50%, rgb(54, 150, 125) 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.3;
+  position: absolute;
+  right: -50%;
+  top: 0;
+  z-index: -2;
+  border-radius: 16px;
+  transition: background 0.2s;
+}
+
+.adminStepsBg {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 2rem 1rem;
+  background: #f5f6fa;
+}
+.adminStepsBg::before {
+  content: "";
+  animation: slide 5s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #e3e6ef 50%, #2d313a 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: absolute;
+  right: -50%;
+  top: 0;
+  z-index: -2;
+  border-radius: 16px;
+  transition: background 0.2s;
+}
+.adminStepsBg::after {
+  content: "";
+  animation: slide 8s ease-in-out infinite alternate-reverse;
+  background-image: linear-gradient(-60deg, #2d313a 50%, #e3e6ef 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.3;
+  position: absolute;
+  right: -50%;
+  top: 0;
+  z-index: -2;
+  border-radius: 16px;
+  transition: background 0.2s;
+}
+
+/* Dark mode overrides */
+html[data-theme='dark'] .userStepsBg {
+  background: #23272f;
+}
+html[data-theme='dark'] .userStepsBg::before {
+  background-image: linear-gradient(-60deg, #23272f 50%, rgb(125, 54, 150) 50%);
+}
+html[data-theme='dark'] .userStepsBg::after {
+  background-image: linear-gradient(-60deg, #23272f 50%, #6c3 50%);
+}
+html[data-theme='dark'] .adminStepsBg {
+  background: #23272f;
+}
+html[data-theme='dark'] .adminStepsBg::before {
+  background-image: linear-gradient(-60deg, #2d313a 50%, #e3e6ef 50%);
+}
+html[data-theme='dark'] .adminStepsBg::after {
+  background-image: linear-gradient(-60deg, #e3e6ef 50%, #2d313a 50%);
+}

@@ -1,0 +1,454 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 2rem 0;
+  text-align: center;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Animated gradient backgrounds for hero banner */
+.heroBannerBg {
+  animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, rgb(125, 54, 150) 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: absolute;
+  right: -50%;
+  top: 0;
+  z-index: -2; /* ensure it's behind all content */
+}
+.heroBannerBg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 8s;
+  z-index: -2; /* ensure it's behind all content */
+}
+.heroBannerBg3 {
+  animation-duration: 5s;
+  z-index: -2; /* ensure it's behind all content */
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* New styles for button layout and image */
+.buttonsRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.exampleCACImg {
+  max-height: 64px;
+  width: auto;
+  display: block;
+}
+
+.exampleCACImgAbsolute {
+  position: static;
+  max-height: 300px;
+  width: auto;
+  z-index: 1;
+  /* Optional: subtle drop shadow */
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  transition: transform 1s cubic-bezier(0.4,0,0.2,1);
+}
+.exampleCACImgDown {
+  transform: translateY(15px); /* 5% of 300px */
+}
+
+@media screen and (max-width: 996px) {
+  .buttonsRow {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .exampleCACImg {
+    max-width: 90vw;
+    max-height: 120px;
+  }
+}
+
+/* Shared styles for all buttons */
+.customButton,
+.certificateButton,
+.cacButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* Primary blue button (your existing style) */
+.customButton {
+  background-color: #004FCC;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 79, 204, 0.4);
+}
+.customButton:hover {
+  background-color: #003C9C;
+  transform: translateY(-2px);
+}
+[data-theme='dark'] .customButton {
+  background-color: #66B2FF;
+  color: #000000;
+  box-shadow: 0 4px 10px rgba(102, 178, 255, 0.5);
+}
+[data-theme='dark'] .customButton:hover {
+  background-color: #4AA8FF;
+}
+
+/* Certificate button - Vibrant teal/cyan (distinct from blue) */
+.certificateButton {
+  background-color: #17BEBB;  /* teal */
+  color: #000000;
+  box-shadow: 0 4px 10px rgba(23, 190, 187, 0.4);
+}
+.certificateButton:hover {
+  background-color: #129A9A;  /* darker teal */
+  color: #ffffff;
+  box-shadow: 0 6px 14px rgba(18, 154, 154, 0.6);
+  transform: translateY(-2px);
+}
+[data-theme='dark'] .certificateButton {
+  background-color: #38D7D0;  /* lighter teal */
+  color: #003030;  /* dark text for contrast */
+  box-shadow: 0 4px 10px rgba(56, 215, 208, 0.5);
+}
+[data-theme='dark'] .certificateButton:hover {
+  background-color: #1BAEAC;  /* medium teal */
+  color: #ffffff;
+  box-shadow: 0 6px 14px rgba(27, 174, 172, 0.7);
+}
+
+/* CAC button - Warm gold / orange with stronger contrast */
+.cacButton {
+  background-color: #FFB800;  /* vibrant gold */
+  color: #4A3200;  /* dark brown for contrast */
+  box-shadow: 0 4px 10px rgba(255, 184, 0, 0.4);
+}
+.cacButton:hover {
+  background-color: #CC9400;  /* deeper gold */
+  color: #ffffff;
+  box-shadow: 0 6px 14px rgba(204, 148, 0, 0.6);
+  transform: translateY(-2px);
+}
+[data-theme='dark'] .cacButton {
+  background-color: #FFDB4D;  /* bright gold */
+  color: #4A3200;
+  box-shadow: 0 4px 10px rgba(255, 219, 77, 0.5);
+}
+[data-theme='dark'] .cacButton:hover {
+  background-color: #E6C23A;  /* darker gold */
+  color: #ffffff;
+  box-shadow: 0 6px 14px rgba(230, 194, 58, 0.7);
+}
+
+.exampleCACImgWrapper {
+  display: inline-block;
+  -webkit-mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+  overflow: visible;
+  position: relative;
+}
+
+/* Clamshell shape at the bottom edge of the CAC image */
+.clamshellWithLight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: auto;
+  bottom: -104px; /* start hidden below */
+  margin: 0 auto;
+  width: 100%;
+  height: 104px;
+  background: #e0e0e0;
+  border-top-left-radius: 150px 54px;
+  border-top-right-radius: 150px 54px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  z-index: 21;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: bottom 1s cubic-bezier(0.4,0,0.2,1);
+}
+.clamshellWithLightUp {
+  bottom: 0;
+}
+.clamshellWithLight::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 18px;              /* <-- Move the V up/down */
+  transform: translateX(-50%);
+  width: 120px;            /* <-- Make the V wider/narrower */
+  height: 60px;           /* <-- Make the V taller/shorter */
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 60%, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.06) 0%, transparent 100%),
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0,0,0,0.10) 40%,
+      rgba(0,0,0,0.10) 60%,
+      transparent 100%
+    );
+  border-radius: 0 0 60px 60px / 0 0 60px 60px; /* <-- Curve of the V */
+  opacity: 0.7;
+  filter: blur(0.5px);
+}
+
+/* Blinking center light at the edge of the clamshell */
+.clamshellLight {
+  position: absolute;
+  left: 48%;
+  top: 1px;
+  transform: translateX(-0%);
+  width: 14px;
+  height: 14px;
+  background: #3bff69;
+  border-radius: 90%;
+  box-shadow: 0 0 12px 9px #00ff6299;
+  /* Remove animation by default */
+  border: 1px solid #00bd32;
+  z-index: 11;
+  opacity: 0.3; /* dim by default */
+}
+/* Only blink and brighten when clamshell is up AND after transition is finished */
+.clamshellWithLightUp.clamshellWithLightBlink .clamshellLight {
+  animation: clamshellBlink 1s steps(1) infinite;
+  opacity: 1;
+}
+/* Solid bright after blinking */
+.clamshellWithLightUp.clamshellWithLightSolid .clamshellLight {
+  animation: none;
+  opacity: 1;
+}
+
+/* YubiKey wrapper and animation (copy from exampleCACImgWrapper & slideDownAndUp) */
+.exampleYubiKeyWrapper {
+  display: inline-block;
+  -webkit-mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+  overflow: visible;
+  position: relative;
+  transition: transform 1s cubic-bezier(0.4,0,0.2,1), opacity 0.5s cubic-bezier(0.4,0,0.2,1) 0.7s;
+}
+.exampleYubiKeyDown {
+  transform: translateY(30px); /* was 15px, now lower */
+  opacity: 1;
+}
+
+/* USB clamshell (no blinking light for YubiKey) */
+.usb {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: auto;
+  bottom: -104px; /* start hidden below */
+  width: 100%;
+  height: 80px; /* increased from 50px for a higher rise */
+  background: #454545;
+  border-top-left-radius: 150px 0px;
+  border-top-right-radius: 150px 0px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18), 0 1px 0 #888 inset;
+  z-index: 10; /* higher than yubikey image (which is z-index: 1) */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+  border: 2px solid #222;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: bottom 1s cubic-bezier(0.4,0,0.2,1);
+}
+.usbUp {
+  bottom: 30px; /* raise the usb higher above the bottom of the wrapper */
+}
+
+/* USB port rectangle inside the usb clamshell */
+.usbPortRect {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 20px;
+  background: #888;
+  border-radius: 3px;
+  border: 2px solid #888;
+  box-shadow: 0 1px 2px #222 inset, 0 0 0 1px #fff;
+  z-index: 23;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1); /* was 0.4s, now 0.3s for quicker fade */
+  /* Remove old ::before/::after gold contacts */
+  /* Add 4 gold contacts using pseudo-elements */
+}
+.usbPortRect::before,
+.usbPortRect::after,
+.usbPortRect .usbGold1,
+.usbPortRect .usbGold2 {
+  content: "";
+  position: absolute;
+  top: 4px;
+  width: 8px;
+  height: 12px;
+  background: linear-gradient(90deg, #FFD700 60%, #FFB800 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 2px #bfa100;
+}
+.usbPortRect::before {
+  left: 8px;
+}
+.usbPortRect::after {
+  left: 20px;
+}
+.usbPortRect .usbGold1 {
+  left: 34px;
+}
+.usbPortRect .usbGold2 {
+  left: 46px;
+}
+
+/* Show and fade out the port when usb is up, show again when down */
+.usb.usbUp .usbPortRect {
+  opacity: 1;
+  animation: usbPortFadeOut 0.3s 0.3s forwards; /* was 0.5s 0.5s, now 0.3s 0.3s for quicker fade */
+}
+.usb:not(.usbUp) .usbPortRect {
+  opacity: 1;
+  animation: none;
+}
+@keyframes usbPortFadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes slideDownAndUp {
+  0% {
+    transform: translateY(0);
+    -webkit-mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+  }
+  9.7% {
+    transform: translateY(25%);
+    -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 75%);
+    mask-image: linear-gradient(to bottom, black 75%, transparent 75%);
+  }
+  49.6% {
+    transform: translateY(25%);
+    -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 75%);
+    mask-image: linear-gradient(to bottom, black 75%, transparent 75%);
+  }
+  58.5% {
+    transform: translateY(0);
+    -webkit-mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+  }
+  100% {
+    transform: translateY(0);
+    -webkit-mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+  }
+}
+
+@keyframes clamshellBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* YubiKey light styles */
+.yubiKeyLight {
+  position: absolute;
+  top: 102px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 49px;
+  height: 49px;
+  background: transparent;
+  border-radius: 50%;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.4,0,0.2,1);
+  border: none;
+}
+.yubiKeyLight.yubiKeyLightVisible {
+  opacity: 1;
+}
+.yubiKeyLightInner {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  border: 4px solid #3bff69;
+  box-shadow: 0 0 16px 6px #00ff6299;
+  opacity: 0.3;
+  /* Make it a ring (hollow center) */
+  box-sizing: border-box;
+}
+.yubiKeyLightBlink .yubiKeyLightInner {
+  animation: yubiKeyBlinkSolid 1s steps(1) 0s 1, yubiKeyBlinkSolid 3s steps(1) 0s 1;
+  /* The JS will toggle .yubiKeyLightSolid after blinking */
+  opacity: 1;
+}
+.yubiKeyLightSolid .yubiKeyLightInner {
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes yubiKeyBlinkSolid {
+  0%, 16.6%, 33.3%, 50% { opacity: 1; }
+  8.3%, 25%, 41.6% { opacity: 0.2; }
+  58.3%, 100% { opacity: 1; }
+}
+
+.hidden {
+  display: none !important;
+}
