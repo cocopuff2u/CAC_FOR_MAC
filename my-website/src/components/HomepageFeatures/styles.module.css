@@ -23,13 +23,16 @@
   position: relative;
   overflow: hidden;
   border-radius: 16px;
-  padding: 2rem 1rem;
+  padding: 1.2rem 1rem;
   background: #f5f6fa;
+  box-shadow: 0 4px 24px 0 rgba(80, 120, 200, 0.10), 0 1.5px 6px 0 rgba(125, 54, 150, 0.08);
+  border: 2px dotted #6c3;
 }
 .userStepsBg::before {
   content: "";
   animation: slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, #6c3 50%, rgb(125, 54, 150) 50%);
+  background-image: 
+    linear-gradient(120deg, #6c3 0%, #6c3 100%);
   bottom: 0;
   left: -50%;
   opacity: 0.5;
@@ -39,11 +42,14 @@
   z-index: -2;
   border-radius: 16px;
   transition: background 0.2s;
+  filter: blur(8px);
 }
 .userStepsBg::after {
   content: "";
   animation: slide 8s ease-in-out infinite alternate-reverse;
-  background-image: linear-gradient(-60deg, #6c3 50%, rgb(54, 150, 125) 50%);
+  background-image: 
+    radial-gradient(circle at 80% 20%, #6c3 0%, transparent 70%),
+    linear-gradient(-60deg, #6c3 50%, #6c3 50%);
   bottom: 0;
   left: -50%;
   opacity: 0.3;
@@ -53,19 +59,23 @@
   z-index: -2;
   border-radius: 16px;
   transition: background 0.2s;
+  filter: blur(4px);
 }
 
 .adminStepsBg {
   position: relative;
   overflow: hidden;
   border-radius: 16px;
-  padding: 2rem 1rem;
+  padding: 1.2rem 1rem;
   background: #f5f6fa;
+  box-shadow: 0 4px 24px 0 rgba(80, 120, 200, 0.10), 0 1.5px 6px 0 rgba(125, 54, 150, 0.08);
+  border: 2px dotted #6c3;
 }
 .adminStepsBg::before {
   content: "";
   animation: slide 5s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, #e3e6ef 50%, #2d313a 50%);
+  background-image: 
+    linear-gradient(120deg, #6c3 0%, #6c3 100%);
   bottom: 0;
   left: -50%;
   opacity: 0.5;
@@ -75,11 +85,14 @@
   z-index: -2;
   border-radius: 16px;
   transition: background 0.2s;
+  filter: blur(8px);
 }
 .adminStepsBg::after {
   content: "";
   animation: slide 8s ease-in-out infinite alternate-reverse;
-  background-image: linear-gradient(-60deg, #2d313a 50%, #e3e6ef 50%);
+  background-image: 
+    radial-gradient(circle at 80% 20%, #6c3 0%, transparent 70%),
+    linear-gradient(-60deg, #6c3 50%, #6c3 50%);
   bottom: 0;
   left: -50%;
   opacity: 0.3;
@@ -89,24 +102,37 @@
   z-index: -2;
   border-radius: 16px;
   transition: background 0.2s;
+  filter: blur(4px);
 }
 
 /* Dark mode overrides */
 html[data-theme='dark'] .userStepsBg {
   background: #23272f;
+  box-shadow: 0 4px 24px 0 rgba(125, 54, 150, 0.15), 0 1.5px 6px 0 rgba(54, 150, 125, 0.10);
+  border: 2px dotted #7d3696;
 }
 html[data-theme='dark'] .userStepsBg::before {
-  background-image: linear-gradient(-60deg, #23272f 50%, rgb(125, 54, 150) 50%);
+  background-image: linear-gradient(120deg, #7d3696 0%, #7d3696 100%);
+  filter: blur(10px);
 }
 html[data-theme='dark'] .userStepsBg::after {
-  background-image: linear-gradient(-60deg, #23272f 50%, #6c3 50%);
+  background-image: 
+    radial-gradient(circle at 80% 20%, #7d3696 0%, transparent 70%),
+    linear-gradient(-60deg, #7d3696 50%, #7d3696 50%);
+  filter: blur(6px);
 }
 html[data-theme='dark'] .adminStepsBg {
   background: #23272f;
+  box-shadow: 0 4px 24px 0 rgba(45, 49, 58, 0.15), 0 1.5px 6px 0 rgba(227, 230, 239, 0.10);
+  border: 2px dotted #7d3696;
 }
 html[data-theme='dark'] .adminStepsBg::before {
-  background-image: linear-gradient(-60deg, #2d313a 50%, #e3e6ef 50%);
+  background-image: linear-gradient(120deg, #7d3696 0%, #7d3696 100%);
+  filter: blur(10px);
 }
 html[data-theme='dark'] .adminStepsBg::after {
-  background-image: linear-gradient(-60deg, #e3e6ef 50%, #2d313a 50%);
+  background-image: 
+    radial-gradient(circle at 80% 20%, #7d3696 0%, transparent 70%),
+    linear-gradient(-60deg, #7d3696 50%, #7d3696 50%);
+  filter: blur(6px);
 }

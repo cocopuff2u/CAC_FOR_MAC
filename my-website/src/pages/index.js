@@ -148,12 +148,12 @@ function HomepageHeader() {
             <Link
               className={`button button--secondary button--lg ${styles.certificateButton}`}
               to="/docs/intro">
-              Certificate Tutorial
+              Certificate Guide
             </Link>
             <Link
               className={`button button--primary button--lg ${styles.cacButton}`}
               to="/docs/cac-tutorial">
-              CAC Tutorial
+              CAC Guide
             </Link>
           </div>
         </div>

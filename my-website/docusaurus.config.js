@@ -81,9 +81,9 @@ const config = {
       // Replace with your project's social card
       image: 'img/Example_CAC.png',
       navbar: {
-        title: 'My Site',
+        title: 'CAC For Mac',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'CAC For Mac Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -91,11 +91,20 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Introduction',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            to: '/docs/certificate-guide/intro',
+            label: 'Certificate Guide',
+            position: 'left',
+          },
+          {
+            to: '/docs/cac-guide/intro',
+            label: 'CAC Guide',
+            position: 'left',
+          },
+          {
+            href: 'https://github.com/cocopuff2u/CAC-For-Mac',
             label: 'GitHub',
             position: 'right',
           },
@@ -110,6 +119,14 @@ const config = {
               {
                 label: 'Tutorial',
                 to: '/docs/intro',
+              },
+              {
+                label: 'Certificate Guide',
+                to: '/docs/cac-guide',
+              },
+              {
+                label: 'CAC Guide',
+                to: '/docs/cac-guide',
               },
             ],
           },
@@ -133,10 +150,6 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/facebook/docusaurus',

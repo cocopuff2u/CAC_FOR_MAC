@@ -8,40 +8,12 @@ const FeatureList = [
     title: 'Step 1',
     Img: require('@site/static/img/certificates.webp').default,
     imgType: 'img',
-    description: (
+    userDescription: (
       <>
         Download the latest DoD Certificate Authority Certificates from the official source to ensure secure access.
       </>
     ),
-  },
-  {
-    title: 'Step 2',
-    Img: require('@site/static/img/cac_inserted.webp').default,
-    imgType: 'img',
-    description: (
-      <>
-        Connect your CAC reader to your Mac and insert your card. Ensure the system detects it properly.
-      </>
-    ),
-  },
-  {
-    title: 'Step 3',
-    Img: require('@site/static/img/access_approved.webp').default,
-    imgType: 'img',
-    description: (
-      <>
-        Visit the desired CAC-enabled website or application to confirm access is working.
-      </>
-    ),
-  },
-];
-
-const FeatureList2 = [
-  {
-    title: 'Step 1',
-    Img: require('@site/static/img/certificates.webp').default,
-    imgType: 'img',
-    description: (
+    adminDescription: (
       <>
         Deploy the latest DoD Certificate Authority Certificates to user devices using your preferred device management solution.
       </>
@@ -49,9 +21,14 @@ const FeatureList2 = [
   },
   {
     title: 'Step 2',
-    Img: require('@site/static/img/systemadmin.webp').default,
+    Img: require('@site/static/img/cac_inserted.webp').default,
     imgType: 'img',
-    description: (
+    userDescription: (
+      <>
+        Connect your CAC reader to your Mac and insert your card. Ensure the system detects it properly.
+      </>
+    ),
+    adminDescription: (
       <>
         Set up CAC integration by ensuring the reader is properly recognized by the operating system and paired with the user's account if necessary.
       </>
@@ -59,13 +36,19 @@ const FeatureList2 = [
   },
   {
     title: 'Step 3',
-    Img: require('@site/static/img/Access_approved_guy.webp').default,
+    Img: require('@site/static/img/access_approved.webp').default,
     imgType: 'img',
-    description: (
+    userDescription: (
+      <>
+        Visit the desired CAC-enabled website or application to confirm access is working.
+      </>
+    ),
+    adminDescription: (
       <>
         Validate the setup by having users access a CAC-protected resource to confirm functionality.
       </>
     ),
+    adminImg: require('@site/static/img/Access_approved_guy.webp').default,
   },
 ];
 
@@ -90,10 +73,42 @@ function Feature({Img, imgType, title, description}) {
   );
 }
 
+// New component to render steps for either user or admin
+function FeatureSteps({ type }) {
+  return (
+    <div className="row">
+      {FeatureList.map((props, idx) => {
+        // For admin, use alternate image for step 3 if provided
+        const Img = type === 'admin' && props.adminImg ? props.adminImg : props.Img;
+        const description = type === 'admin' ? props.adminDescription : props.userDescription;
+        return (
+          <Feature
+            key={type + '-' + idx}
+            Img={Img}
+            imgType={props.imgType}
+            title={props.title}
+            description={description}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
 export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
+        {/* Intro section about CAC, YubiKey, and Smart Cards */}
+        <div style={{textAlign: 'center', marginBottom: 40}}>
+          <h2>What is a CAC or Smart Card?</h2>
+          <p>
+            A <strong>Common Access Card (CAC)</strong> is a smart card issued by the U.S. Department of Defense and other government agencies that provides secure identification and authentication for military personnel, contractors, and federal employees.<br />
+            Devices like <strong>YubiKey</strong> can also be used in a similar way for secure access with some agencies.
+            <br /><br />
+            Apple refers to these devices as <strong>Smart Cards</strong> in macOS. They can be used to log in to your Mac, unlock your device, or access secure resources—whether on the web or in local applications—by providing two-factor authentication and cryptographic security.
+          </p>
+        </div>
         {/* Add info above the feature list */}
         <div style={{textAlign: 'center', marginBottom: 32}}>
           <h2>Want To Quickly Download DoD Certifcates?</h2>
@@ -103,10 +118,9 @@ export default function HomepageFeatures() {
           <CodeBlock language="bash">
             sudo bash -c "$(curl -s https://raw.githubusercontent.com/cocopuff2u/MacOS_GOV_Scripts/main/Keychain_And_Certificates_Scripts/Import_DoD_Certs.sh)"
           </CodeBlock>
-                              <p style={{fontStyle: 'italic', fontSize: '0.9rem', marginTop: '-10px'}}>
+          <p style={{fontStyle: 'italic', fontSize: '0.9rem', marginTop: '-10px'}}>
             *Always verify scripts before running them, especially if you are downloading it from a third-party source. You can view the script <a href="https://raw.githubusercontent.com/cocopuff2u/MacOS_GOV_Scripts/main/Keychain_And_Certificates_Scripts/Import_DoD_Certs.sh" target="_blank" rel="noopener noreferrer">here</a>.
           </p>
-
         </div>
         {/* Gap before User Steps */}
         <div style={{height: 40}} />
@@ -122,11 +136,7 @@ export default function HomepageFeatures() {
             </p>
           </div>
         </div>
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
+        <FeatureSteps type="user" />
         {/* Gap before Admin Steps */}
         <div style={{height: 56}} />
         <div className={styles.adminStepsBg}>
@@ -141,11 +151,7 @@ export default function HomepageFeatures() {
             </p>
           </div>
         </div>
-        <div className="row">
-          {FeatureList2.map((props, idx) => (
-            <Feature key={`extra-${idx}`} {...props} />
-          ))}
-        </div>
+        <FeatureSteps type="admin" />
       </div>
     </section>
   );

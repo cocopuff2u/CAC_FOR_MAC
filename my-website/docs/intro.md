@@ -1,47 +1,81 @@
 ---
 sidebar_position: 1
+sidebar: false
 ---
+# Guide Introduction
 
-# Tutorial Intro
+**This website is designed to provide scripts, guides, links, and tools to help you get your CAC, Smart Card, or YubiKey working for authentication on your devices.**
 
-Let's discover **Docusaurus in less than 5 minutes**.
+## What are CACs, YubiKeys, and Smart Cards?
 
-## Getting Started
+A **Common Access Card (CAC)** is a smart card issued primarily by the U.S. Department of Defense and other government agencies. It is used for secure identification and authentication, enabling access to government computers, networks, and physical facilities. CACs contain embedded microchips that store certificates and cryptographic keys for secure login and digital signatures.
+<p align="center">
+  <img src="/img/example_cac.webp" alt="Example CAC Card" width="180" /><br/>
+  <em>Example of a Common Access Card (CAC)</em>
+</p>
 
-Get started by **creating a new site**.
+A **YubiKey** is a hardware authentication device produced by Yubico. It supports multiple authentication protocols (such as FIDO2, U2F, PIV, and OTP) and can be used as a smart card for secure login, two-factor authentication, and cryptographic operations. Some government agencies allow YubiKeys to be used in place of traditional CACs or PIV cards for secure access.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+<p align="center">
+  <img src="/img/Example_yubikey.webp" alt="Example YubiKey" width="90" /><br/>
+  <em>Example of a YubiKey</em>
+</p>
 
-### What you'll need
+**Smart Cards** is a general term for physical cards with embedded integrated circuits (chips) that can process data. On macOS, Apple refers to CACs, PIV cards, and similar devices (including YubiKeys in smart card mode) as "Smart Cards." These cards are used for secure authentication to computers, web resources, and applications, often providing two-factor authentication and cryptographic security.
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+## Who is this for?
 
-## Generate a new site
+This site is designed for government employees, contractors, IT administrators, and anyone who needs to use a CAC, Smart Card, or YubiKey for secure authentication on macOS. If you're having trouble getting things to work, you're in the right place.
 
-Generate a new Docusaurus site using the **classic template**.
+## What problems does this site solve?
 
-The classic template will automatically be added to your project after you run the command:
+- Fixing certificate errors and authentication issues
+- Setting up CAC/Smart Card/YubiKey on macOS
+- Troubleshooting common problems
+- Providing up-to-date scripts and automation
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+## Quick Start
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+- Follow the homepage instructions to quickly install DoD certificates.
+- See the User and Admin guides for step-by-step setup.
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+## Supported Platforms
 
-## Start your site
+- macOS (latest versions)
+- Some guides and scripts may also help with Windows and Linux
 
-Run the development server:
+## Security Notice
 
-```bash
-cd my-website
-npm run start
-```
+Always verify scripts before running them. Follow your agency’s security policies and keep your system updated.
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+## Troubleshooting & FAQ
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+See the [Troubleshooting](./troubleshooting.md) and [FAQ](./faq.md) pages for solutions to common issues.
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+## Community & Support
+
+- [GitHub Issues](https://github.com/cocopuff2u/MacOS_GOV_Scripts/issues)
+- [Contact](mailto:your-email@example.com) for help or suggestions
+
+## Contributing
+
+Contributions are welcome! Submit scripts, guides, or corrections via GitHub.
+
+## Changelog / Updates
+
+See the [Changelog](./changelog.md) for recent updates and new features.
+
+## Learn More & Vendor Links
+
+- **CAC & PIV Information**
+  - [U.S. Department of Defense CAC Portal](https://www.cac.mil/)
+  - [GSA PIV Program](https://www.idmanagement.gov/piv/)
+- **YubiKey**
+  - [Yubico (YubiKey)](https://www.yubico.com/)
+  - [YubiKey for Government](https://www.yubico.com/solutions/government/)
+- **Other Smart Card Vendors**
+  - [Thales (Gemalto)](https://www.thalesgroup.com/en/markets/digital-identity-and-security/government/information-protection/smart-cards)
+  - [Identiv](https://www.identiv.com/products/smart-card-readers/)
+  - [HID Global](https://www.hidglobal.com/products/cards-and-credentials/smart-cards)
+- **Apple Smart Card Support**
+  - [Apple Platform Deployment: Smart Cards](https://support.apple.com/guide/deployment/smart-card-authentication-depca5d87151/web)
