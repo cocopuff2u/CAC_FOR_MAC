@@ -11,7 +11,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'CAC For Mac',
-  tagline: 'Your Go-To Guide for CAC on macOS',
+  tagline: 'Your Go-To Guide for Smart Cards on macOS',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -88,25 +88,46 @@ const config = {
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            type: 'doc',
+            docId: 'intro',
             position: 'left',
             label: 'Introduction',
           },
           {
-            to: '/docs/certificate-guide/intro',
+            type: 'docSidebar',
+            sidebarId: 'certificateGuideSidebar',
+            position: 'left',
             label: 'Certificate Guide',
-            position: 'left',
           },
           {
-            to: '/docs/cac-guide/intro',
+            type: 'docSidebar',
+            sidebarId: 'cacGuideSidebar',
+            position: 'left',
             label: 'CAC Guide',
-            position: 'left',
           },
           {
-            href: 'https://github.com/cocopuff2u/CAC-For-Mac',
-            label: 'GitHub',
+            type: 'docSidebar',
+            sidebarId: 'smartCardGuideSidebar',
+            position: 'left',
+            label: 'Smart Card Guide',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'docsSidebar',
+            position: 'right', // Use 'left' for consistency
+            label: 'Support',
+          },
+          {
+            href: 'https://github.com/cocopuff2u/cac-for-mac',
             position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
+          },
+          {
+            href: 'https://www.buymeacoffee.com/cocopuff2u',
+            position: 'right',
+            className: 'header-buymeacoffee-link',
+            'aria-label': 'Buy Me a Coffee',
           },
         ],
       },

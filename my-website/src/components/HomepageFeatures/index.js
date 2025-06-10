@@ -101,27 +101,36 @@ export default function HomepageFeatures() {
       <div className="container">
         {/* Intro section about CAC, YubiKey, and Smart Cards */}
         <div style={{textAlign: 'center', marginBottom: 40}}>
-          <h2>What is a CAC or Smart Card?</h2>
-          <p>
-            A <strong>Common Access Card (CAC)</strong> is a smart card issued by the U.S. Department of Defense and other government agencies that provides secure identification and authentication for military personnel, contractors, and federal employees.<br />
-            Devices like <strong>YubiKey</strong> can also be used in a similar way for secure access with some agencies.
-            <br /><br />
-            Apple refers to these devices as <strong>Smart Cards</strong> in macOS. They can be used to log in to your Mac, unlock your device, or access secure resources—whether on the web or in local applications—by providing two-factor authentication and cryptographic security.
-          </p>
+<h2>What Is a Smart Card?</h2>
+<p>
+  A <strong>smart card</strong> is a physical device—like a chip card or USB key—with a secure microchip used for login, authentication, and encryption. macOS refers to these as “Smart Cards” and supports them for secure login and access control.
+</p>
+
+<h3>Common Types</h3>
+<ul>
+    <strong>CAC (Common Access Card):</strong> Issued by the U.S. Department of Defense or Government Agencies for secure identification and access. <br></br>
+    <strong>YubiKey (PIV Mode):</strong> A hardware token that emulates a smart card, widely used for secure login and two-factor authentication.<br></br>
+    <strong>ICC/IC Cards:</strong> Standard smart cards used in various industries for secure access and identity verification.
+</ul>
+
+
         </div>
         {/* Add info above the feature list */}
-        <div style={{textAlign: 'center', marginBottom: 32}}>
-          <h2>Want To Quickly Download DoD Certifcates?</h2>
-          <p>
-            Just copy and paste the command below into your terminal to download and install the latest DoD Certificate Authority Certificates.
-          </p>
-          <CodeBlock language="bash">
-            sudo bash -c "$(curl -s https://raw.githubusercontent.com/cocopuff2u/MacOS_GOV_Scripts/main/Keychain_And_Certificates_Scripts/Import_DoD_Certs.sh)"
-          </CodeBlock>
-          <p style={{fontStyle: 'italic', fontSize: '0.9rem', marginTop: '-10px'}}>
-            *Always verify scripts before running them, especially if you are downloading it from a third-party source. You can view the script <a href="https://raw.githubusercontent.com/cocopuff2u/MacOS_GOV_Scripts/main/Keychain_And_Certificates_Scripts/Import_DoD_Certs.sh" target="_blank" rel="noopener noreferrer">here</a>.
-          </p>
-        </div>
+<div style={{ textAlign: 'center', marginBottom: 32 }}>
+  <h2>Need DoD Certificates on Your Mac—Fast?</h2>
+    <p style={{ fontSize: '0.9rem', marginTop: '-10px' }}>
+    If you're a government employee or contractor, you can quickly install the latest DoD Certificate Authority (CA) certificates by running the command below in your terminal.
+  </p>
+
+  <CodeBlock language="bash">
+    sudo bash -c "$(curl -s https://raw.githubusercontent.com/cocopuff2u/MacOS_GOV_Scripts/main/Keychain_And_Certificates_Scripts/Import_DoD_Certs.sh)"
+  </CodeBlock>
+
+  <p style={{ fontStyle: 'italic', fontSize: '0.9rem', marginTop: '-10px' }}>
+    *Always review scripts before running them. You can inspect this one <a href="https://raw.githubusercontent.com/cocopuff2u/MacOS_GOV_Scripts/main/Keychain_And_Certificates_Scripts/Import_DoD_Certs.sh" target="_blank" rel="noopener noreferrer">here</a>.
+  </p>
+</div>
+
         {/* Gap before User Steps */}
         <div style={{height: 40}} />
         <div className={styles.userStepsBg}>
