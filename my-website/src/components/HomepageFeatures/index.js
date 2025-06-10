@@ -103,9 +103,10 @@ export default function HomepageFeatures() {
           <CodeBlock language="bash">
             sudo bash -c "$(curl -s https://raw.githubusercontent.com/cocopuff2u/MacOS_GOV_Scripts/main/Keychain_And_Certificates_Scripts/Import_DoD_Certs.sh)"
           </CodeBlock>
-          <p style={{fontStyle: 'italic'}}>
-            *Always verify the script before running it, especially if you are downloading it from a third-party source. You can view the script <a href="https://raw.githubusercontent.com/cocopuff2u/MacOS_GOV_Scripts/main/Keychain_And_Certificates_Scripts/Import_DoD_Certs.sh" target="_blank" rel="noopener noreferrer">here</a>.
+                              <p style={{fontStyle: 'italic', fontSize: '0.9rem', marginTop: '-10px'}}>
+            *Always verify scripts before running them, especially if you are downloading it from a third-party source. You can view the script <a href="https://raw.githubusercontent.com/cocopuff2u/MacOS_GOV_Scripts/main/Keychain_And_Certificates_Scripts/Import_DoD_Certs.sh" target="_blank" rel="noopener noreferrer">here</a>.
           </p>
+
         </div>
         {/* Gap before User Steps */}
         <div style={{height: 40}} />
