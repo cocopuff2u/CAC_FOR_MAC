@@ -199,7 +199,10 @@ function HomepageHeader() {
             <img
               src="/img/Example_YubiKey.webp"
               alt="Example YubiKey"
-              className={styles.exampleCACImgAbsolute}
+              className={clsx(
+                styles.exampleCACImgAbsolute,
+                styles.noShadow // <-- add this class
+              )}
             />
             {/* Blinking light in a hole at the top of the YubiKey */}
             <span className={clsx(
