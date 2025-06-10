@@ -30,6 +30,8 @@ function HomepageHeader() {
   const [yubiLightVisible, setYubiLightVisible] = useState(false);
   const [yubiLightSolid, setYubiLightSolid] = useState(false);
   const [showCAC, setShowCAC] = useState(true);
+  const [cacFadeOut, setCacFadeOut] = useState(false);
+  const [yubiFadeOut, setYubiFadeOut] = useState(false);
 
   useEffect(() => {
     let timeouts = [];
@@ -44,6 +46,8 @@ function HomepageHeader() {
       clearAll();
       if (!isMounted) return;
       setShowCAC(true);
+      setCacFadeOut(false);
+      setYubiFadeOut(false);
       setAnimate(false);
       setUsbAnimate(false);
       setYubiLightVisible(false);
@@ -73,8 +77,12 @@ function HomepageHeader() {
           // Delay hiding CAC until after all other state resets
           setTimeout(() => {
             if (!isMounted) return;
-            setShowCAC(false);
-            yubikeyCycle();
+            setCacFadeOut(true);
+            setTimeout(() => {
+              if (!isMounted) return;
+              setShowCAC(false);
+              yubikeyCycle();
+            }, 500); // Wait for fade out
           }, 10); // 10ms delay to avoid flicker
         }, 6000));
       }, 400));
@@ -83,6 +91,7 @@ function HomepageHeader() {
     function yubikeyCycle() {
       clearAll();
       if (!isMounted) return;
+      setYubiFadeOut(false);
       setAnimate(false);
       setUsbAnimate(false);
       setYubiLightVisible(false);
@@ -94,23 +103,28 @@ function HomepageHeader() {
         if (!isMounted) return;
         setAnimate(true);
         setUsbAnimate(true);
-        timeouts.push(setTimeout(() => isMounted && setYubiLightVisible(true), 1000));
-        timeouts.push(setTimeout(() => isMounted && setYubiLightSolid(true), 4000));
+        timeouts.push(setTimeout(() => isMounted && setYubiLightVisible(true), 600));
+        timeouts.push(setTimeout(() => isMounted && setYubiLightSolid(true), 3200));
         timeouts.push(setTimeout(() => {
           if (!isMounted) return;
-          setAnimate(false);
-          setUsbAnimate(false);
           setYubiLightVisible(false);
           setYubiLightSolid(false);
           setBlink(false);
           setSolid(false);
+          // Animate back up first
+          setAnimate(false); // triggers upward animation (0.7s)
+          setUsbAnimate(false);
           setTimeout(() => {
             if (!isMounted) return;
-            setShowCAC(true);
-            cacCycle();
-          }, 10); // 10ms delay to avoid flicker
-        }, 6000));
-      }, 400));
+            setYubiFadeOut(true); // start fade after animation
+            setTimeout(() => {
+              if (!isMounted) return;
+              setShowCAC(true);
+              cacCycle();
+            }, 300); // fade out duration, was 350
+          }, 500); // upward animation duration
+        }, 4800));
+      }, 300));
     }
 
     cacCycle();
@@ -148,11 +162,12 @@ function HomepageHeader() {
           <div
             className={clsx(
               styles.exampleCACImgWrapper,
-              !showCAC && styles.hidden
+              !showCAC && styles.hidden,
+              cacFadeOut && styles.fadeOut
             )}
           >
             <img
-              src="/img/Example_CAC.png"
+              src="/img/Example_CAC.webp"
               alt="Example CAC"
               className={
                 clsx(
@@ -176,12 +191,13 @@ function HomepageHeader() {
             className={clsx(
               styles.exampleYubiKeyWrapper,
               animate && styles.exampleYubiKeyDown,
-              showCAC && styles.hidden
+              showCAC && styles.hidden,
+              !animate && yubiFadeOut && styles.fadeOut // Only fade out when not animating down
             )}
             style={{position: 'relative', display: 'inline-block'}}
           >
             <img
-              src="/img/Example_YubiKey.png"
+              src="/img/Example_YubiKey.webp"
               alt="Example YubiKey"
               className={styles.exampleCACImgAbsolute}
             />

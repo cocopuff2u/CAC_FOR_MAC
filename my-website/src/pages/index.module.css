@@ -184,6 +184,9 @@
   mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
   overflow: visible;
   position: relative;
+  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1) 0s, visibility 0s linear 0.5s;
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Clamshell shape at the bottom edge of the CAC image */
@@ -451,4 +454,10 @@
 
 .hidden {
   display: none !important;
+}
+
+.fadeOut {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1) 0s, visibility 0s linear 0.5s;
 }

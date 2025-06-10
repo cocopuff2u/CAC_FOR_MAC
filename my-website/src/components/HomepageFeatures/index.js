@@ -6,28 +6,31 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Step 1',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Img: require('@site/static/img/certificates.webp').default,
+    imgType: 'img',
     description: (
       <>
-Download the latest DoD Certificate Authority Certificates from the official
+        Download the latest DoD Certificate Authority Certificates from the official source to ensure secure access.
       </>
     ),
   },
   {
     title: 'Step 2',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    Img: require('@site/static/img/cac_inserted.webp').default,
+    imgType: 'img',
     description: (
       <>
-Connect your CAC reader to your computer and insert your CAC. Docusaurus
+        Connect your CAC reader to your Mac and insert your card. Ensure the system detects it properly.
       </>
     ),
   },
   {
     title: 'Step 3',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    Img: require('@site/static/img/access_approved.webp').default,
+    imgType: 'img',
     description: (
       <>
-Access the CAC required website or application.
+        Visit the desired CAC-enabled website or application to confirm access is working.
       </>
     ),
   },
@@ -36,39 +39,48 @@ Access the CAC required website or application.
 const FeatureList2 = [
   {
     title: 'Step 1',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Img: require('@site/static/img/certificates.webp').default,
+    imgType: 'img',
     description: (
       <>
-        Deploy the DoD Certificate Authority Certificates to your users' machines using your preferred management tool.
+        Deploy the latest DoD Certificate Authority Certificates to user devices using your preferred device management solution.
       </>
     ),
   },
   {
     title: 'Step 2',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    Img: require('@site/static/img/systemadmin.webp').default,
+    imgType: 'img',
     description: (
       <>
-        Setup a way to pair the CAC with the user's computer, ensuring that the reader is recognized by the system.
+        Set up CAC integration by ensuring the reader is properly recognized by the operating system and paired with the user's account if necessary.
       </>
     ),
   },
   {
     title: 'Step 3',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    Img: require('@site/static/img/Access_approved_guy.webp').default,
+    imgType: 'img',
     description: (
       <>
-        Test the deployment by accessing a CAC-required website or application to ensure everything works smoothly.
+        Validate the setup by having users access a CAC-protected resource to confirm functionality.
       </>
     ),
   },
 ];
 
-
-function Feature({Svg, title, description}) {
+// Support both SVG React components and PNG/WEBP images
+function Feature({Img, imgType, title, description}) {
   return (
     <div className={clsx('col col--4')}>
+      {/* Gap above the image */}
+      <div style={{height: 24}} />
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        {imgType === 'svg' ? (
+          <Img className={styles.featureSvg} role="img" />
+        ) : (
+          <img src={Img} className={styles.featureSvg} alt={title} />
+        )}
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
