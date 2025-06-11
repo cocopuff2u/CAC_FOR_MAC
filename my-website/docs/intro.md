@@ -9,6 +9,10 @@ This website offers scripts, guides, tools, and helpful links to assist you in s
 
 This guide focuses primarily on **macOS**, with some content applicable to Linux or Windows where noted.
 
+## Who is this for?
+
+This site is for government employees, contractors, IT administrators, and anyone who uses a CAC, Smart Card, YubiKey, or IC/ICC Card to securely access systems on macOS. If you're trying to get things working—or just make them work better—you’re in the right place.
+
 ## What are CACs, YubiKeys, IC/ICC Cards and Smart Cards?
 
 **Smart Cards** is a general term for physical cards with embedded integrated circuits (chips) that can process data. On macOS, Apple refers to CACs, PIV cards, and similar devices (including YubiKeys in smart card mode) as "Smart Cards." These cards are used for secure authentication to computers, web resources, and applications, often providing two-factor authentication and cryptographic security.
@@ -33,24 +37,39 @@ Unlike CACs and YubiKeys, IC/ICC cards may not follow the DoD's strict standards
 
 > _Fun fact: All CACs are IC cards, but not all IC cards are CACs. IC/ICC is the broader technical classification._
 
-## Who is this for?
+## What are Certificates?
 
-This site is for government employees, contractors, IT administrators, and anyone who uses a CAC, Smart Card, YubiKey, or IC/ICC Card to securely access systems on macOS. If you're trying to get things working—or just make them work better—you’re in the right place.
+Certificates are digital documents used to prove identity and establish trust between devices, users, and services. They use cryptographic keys to enable secure communication and authentication. Certificates are a core part of how smart cards, IC Cards, CACs, and YubiKeys work for secure login and access.
+
+There are several types of certificates involved in authentication:
+
+- **Root CA Certificate**: The top-level certificate in a trust chain, issued by a Certificate Authority (CA) that is trusted by your device or organization. Root CAs can be public (pre-installed on your device) or private (installed by your organization for internal use).
+- **Public CA Certificate**: Issued by widely trusted third-party organizations (such as DigiCert, GlobalSign, etc.), these certificates are used to secure public websites and services. Devices and browsers trust these by default.
+- **User Certificate**: Issued to an individual user and stored on a smart card or security key. This certificate proves your identity when logging in or accessing secure resources. The private key for this certificate never leaves your smart card or device.
+
+These certificates work together in a chain of trust, allowing your device to verify that a certificate presented by a smart card or website is valid and trusted.
 
 ## What problems does this site solve?
 
-- **Fixing certificate errors and authentication issues**  
-  Understand and resolve common problems with certificates and login failures.
+This site is designed to help you get smart cards, CACs, and YubiKeys working smoothly in your environment—whether you’re an end-user or a system administrator, and whether you’re working on a personal device or managing a professional fleet. Here’s how:
 
-- **Setting up CAC/Smart Card/YubiKey on macOS**  
-  Step-by-step instructions to get you up and running.
+- **Providing clear information and guidance**  
+  Learn the concepts, requirements, and best practices for using smart cards and certificates on macOS.
 
-- **Troubleshooting common problems**  
-  Guides for diagnosing and resolving common macOS and hardware compatibility issues.
+- **Offering practical commands, scripts, and tools**  
+  Access ready-to-use commands and automation scripts to simplify setup, troubleshooting, and ongoing management.
 
-- **Providing up-to-date scripts and automation**  
-  Use tested scripts to save time and reduce configuration errors.
+- **Solving certificate errors and authentication issues**  
+  Understand and resolve common problems with certificates, login failures, and device compatibility.
 
+- **Step-by-step setup instructions**  
+  Follow detailed guides to configure CACs, Smart Cards, and YubiKeys for your specific needs.
+
+- **Troubleshooting for all roles**  
+  Find targeted troubleshooting advice for both end-users and IT/system administrators.
+
+- **Keeping you up-to-date**  
+  Stay current with tested solutions and the latest recommendations for secure authentication.
 
 ## 🔗 Learn More & Vendor Links
 

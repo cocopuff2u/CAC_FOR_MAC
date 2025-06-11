@@ -10,12 +10,12 @@ const FeatureList = [
     imgType: 'img',
     userDescription: (
       <>
-        Download the latest DoD Certificate Authority Certificates from the official source to ensure secure access.
+        Download the latest certificate authority files from your organization's official source to ensure your Mac can trust secure resources.
       </>
     ),
     adminDescription: (
       <>
-        Deploy the latest DoD Certificate Authority Certificates to user devices using your preferred device management solution.
+        Distribute the latest certificate authority files to all managed devices using your preferred deployment or device management solution.
       </>
     ),
   },
@@ -25,14 +25,15 @@ const FeatureList = [
     imgType: 'img',
     userDescription: (
       <>
-        Connect your CAC reader to your Mac and insert your card. Ensure the system detects it properly.
+        Connect your smart card reader to your Mac and insert your card. Confirm that your Mac recognizes the reader and card before proceeding.
       </>
     ),
     adminDescription: (
       <>
-        Set up CAC integration by ensuring the reader is properly recognized by the operating system and paired with the user's account if necessary.
+        Ensure smart card readers are properly connected and recognized by macOS, and verify that user accounts are configured for smart card authentication as needed.
       </>
     ),
+    adminImg: require('@site/static/img/cac_setup.png').default,
   },
   {
     title: 'Step 3',
@@ -40,12 +41,12 @@ const FeatureList = [
     imgType: 'img',
     userDescription: (
       <>
-        Visit the desired CAC-enabled website or application to confirm access is working.
+        Access a smart card-protected website or application to verify that your setup is working and you have the required access.
       </>
     ),
     adminDescription: (
       <>
-        Validate the setup by having users access a CAC-protected resource to confirm functionality.
+        Have users test access to a smart card-protected resource to confirm successful deployment and functionality across devices.
       </>
     ),
     adminImg: require('@site/static/img/Access_approved_guy.webp').default,
@@ -117,7 +118,7 @@ export default function HomepageFeatures() {
         </div>
         {/* Add info above the feature list */}
 <div style={{ textAlign: 'center', marginBottom: 32 }}>
-  <h2>Need DoD Certificates on Your Mac—Fast?</h2>
+  <h2>Are you a DoD employee that needs DoD Certificates fast?</h2>
     <p style={{ fontSize: '0.9rem', marginTop: '-10px' }}>
     If you're a government employee or contractor, you can quickly install the latest DoD Certificate Authority (CA) certificates by running the command below in your terminal.
   </p>
@@ -137,10 +138,14 @@ export default function HomepageFeatures() {
           <div style={{textAlign: 'center', margin: '32px 0 24px 0'}}>
             <h2>User Steps</h2>
             <p>
-              These steps are designed to help users quickly set up their CAC on their personal macOS.
-              {' '}
+              These steps are designed to help users quickly set up their smart card (CAC, PIV, or similar) on their personal macOS.
+              <br />
               <a href="/docs/cac-tutorial" target="_blank" rel="noopener noreferrer">
-                View User Guide
+                General User Guide
+              </a>
+              {' | '}
+              <a href="/docs/certificate-guide/DoD-Certificates-Users" target="_blank" rel="noopener noreferrer">
+                DoD Employee Guide
               </a>
             </p>
           </div>
@@ -152,10 +157,14 @@ export default function HomepageFeatures() {
           <div style={{textAlign: 'center', margin: '48px 0 32px 0'}}>
             <h2>Admin Steps</h2>
             <p>
-              These steps are designed to help administrators quickly deploy CAC support for their users.
-              {' '}
+              These steps are designed to help administrators quickly deploy CAC and smart card support for their users.
+              <br />
               <a href="/docs/admin-guide" target="_blank" rel="noopener noreferrer">
-                View Admin Guide
+                General Admin Guide
+              </a>
+              {' | '}
+              <a href="/docs/certificate-guide/Tools-Scripts" target="_blank" rel="noopener noreferrer">
+                DoD Admin Tools & Scripts
               </a>
             </p>
           </div>
