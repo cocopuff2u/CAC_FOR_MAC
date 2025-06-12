@@ -33,7 +33,7 @@ const FeatureList = [
         Ensure smart card readers are properly connected and recognized by macOS, and verify that user accounts are configured for smart card authentication as needed.
       </>
     ),
-    adminImg: require('@site/static/img/cac_setup.png').default,
+    adminImg: require('@site/static/img/cac_setup.webp').default,
   },
   {
     title: 'Step 3',
@@ -140,12 +140,20 @@ export default function HomepageFeatures() {
             <p>
               These steps are designed to help users quickly set up their smart card (CAC, PIV, or similar) on their personal macOS.
               <br />
-              <a href="/docs/cac-tutorial" target="_blank" rel="noopener noreferrer">
-                General User Guide
+              <a href="/docs/certificate-guide/Certificate-Introduction" target="_blank" rel="noopener noreferrer">
+                General Cert Guide
               </a>
               {' | '}
               <a href="/docs/certificate-guide/DoD-Certificates-Users" target="_blank" rel="noopener noreferrer">
-                DoD Employee Guide
+                DoD Cert Guide
+              </a>
+              {' | '}
+              <a href="/docs/smart-card-guide/Smart-Card-Introduction" target="_blank" rel="noopener noreferrer">
+                General Smart Card Guide
+              </a>
+              {' | '}
+              <a href="/docs/cac-guide" target="_blank" rel="noopener noreferrer">
+                DoD CAC Guide
               </a>
             </p>
           </div>
@@ -159,12 +167,20 @@ export default function HomepageFeatures() {
             <p>
               These steps are designed to help administrators quickly deploy CAC and smart card support for their users.
               <br />
-              <a href="/docs/admin-guide" target="_blank" rel="noopener noreferrer">
-                General Admin Guide
+              <a href="/docs/certificate-guide/Certificate-Introduction" target="_blank" rel="noopener noreferrer">
+                General Cert Guide
               </a>
               {' | '}
               <a href="/docs/certificate-guide/Tools-Scripts" target="_blank" rel="noopener noreferrer">
-                DoD Admin Tools & Scripts
+                DoD Cert Guide
+              </a>
+              {' | '}
+              <a href="/docs/smart-card-guide/Smart-Card-Introduction" target="_blank" rel="noopener noreferrer">
+                General Smart Card Guide
+              </a>
+              {' | '}
+              <a href="/docs/admin-guide" target="_blank" rel="noopener noreferrer">
+                DoD CAC Guide
               </a>
             </p>
           </div>

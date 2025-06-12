@@ -409,8 +409,8 @@
   top: 102px;
   left: 50%;
   transform: translateX(-50%);
-  width: 49px;
-  height: 49px;
+  width: 49px;  /* Increase this value for a bigger outer circle */
+  height: 49px; /* Increase this value for a bigger outer circle */
   background: transparent;
   border-radius: 50%;
   z-index: 12;
@@ -426,8 +426,8 @@
   opacity: 1;
 }
 .yubiKeyLightInner {
-  width: 44px;
-  height: 44px;
+  width: 44px;   /* Increase this value for a bigger inner ring */
+  height: 44px;  /* Increase this value for a bigger inner ring */
   border-radius: 50%;
   background: transparent;
   border: 4px solid #3bff69;

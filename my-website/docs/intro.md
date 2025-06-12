@@ -7,6 +7,8 @@ sidebar: false
 
 This website offers scripts, guides, tools, and helpful links to assist you in setting up CACs, YubiKeys, or IC/ICC Cards for secure authentication on your devices. Whether you're working from a personal or professional device, you'll find resources tailored for both system administrators and end-users.
 
+It is also a place for users to share their own experiences, tips, and solutions—helping give information back to the community and improve the guide for everyone.
+
 This guide focuses primarily on **macOS**, with some content applicable to Linux or Windows where noted.
 
 ## Who is this for?
@@ -35,7 +37,14 @@ A **YubiKey** is a hardware authentication device produced by Yubico. It support
 
 Unlike CACs and YubiKeys, IC/ICC cards may not follow the DoD's strict standards but still conform to international protocols such as ISO/IEC 7816 or GlobalPlatform. They are widely used in enterprise badge systems, citizen ID cards, EMV banking cards, and secure building access.
 
-> _Fun fact: All CACs are IC cards, but not all IC cards are CACs. IC/ICC is the broader technical classification._
+<p align="center">
+  <img src="/img/Example_card.webp" alt="Example YubiKey" width="180" /><br/>
+  <em>Example of a IC Card</em>
+</p>
+
+:::note[Fun Fact]
+ _All CACs are IC cards, but not all IC cards are CACs. IC/ICC is the broader technical classification._
+:::
 
 ## What are Certificates?
 
@@ -44,8 +53,18 @@ Certificates are digital documents used to prove identity and establish trust be
 There are several types of certificates involved in authentication:
 
 - **Root CA Certificate**: The top-level certificate in a trust chain, issued by a Certificate Authority (CA) that is trusted by your device or organization. Root CAs can be public (pre-installed on your device) or private (installed by your organization for internal use).
+
+  <img src="/img/CertLargeRoot.webp" alt="Example Root" width="80" /><br/>
+
+- **Intermediate CA Certificate**: Issued by a root CA (or another intermediate CA), these certificates act as a "middle layer" in the trust chain. Intermediate certificates are used to sign user or device certificates, providing an extra layer of security and flexibility. Most certificate chains include one or more intermediate certificates between the root and the end-user certificate.
+  <img src="/img/CertLargeStd.webp" alt="Example Intermediate" width="80" /><br/>
+
 - **Public CA Certificate**: Issued by widely trusted third-party organizations (such as DigiCert, GlobalSign, etc.), these certificates are used to secure public websites and services. Devices and browsers trust these by default.
-- **User Certificate**: Issued to an individual user and stored on a smart card or security key. This certificate proves your identity when logging in or accessing secure resources. The private key for this certificate never leaves your smart card or device.
+  <img src="/img/CertLargeRoot.webp" alt="Example Public" width="80" />   <img src="/img/CertLargeStd.webp" alt="Example Intermediate" width="80" /><br/>
+
+- **User Certificate**: Issued to an individual user and stored on a smart card or security key. This certificate proves your identity when logging in or accessing secure resources. The private key for this certificate never leaves your smart card or device.  
+  User certificates are typically issued by an intermediate CA, but in some cases, they can be issued directly by a root CA (especially in smaller or legacy environments).
+  <img src="/img/CertLargePersonal.webp" alt="Example User" width="80" /><br/>
 
 These certificates work together in a chain of trust, allowing your device to verify that a certificate presented by a smart card or website is valid and trusted.
 
@@ -71,11 +90,11 @@ This site is designed to help you get smart cards, CACs, and YubiKeys working sm
 - **Keeping you up-to-date**  
   Stay current with tested solutions and the latest recommendations for secure authentication.
 
-## 🔗 Learn More & Vendor Links
+## Learn More & Vendor Links
 
 ---
 
-### 🍎 Apple Smart Card & macOS Identity Integration
+### Apple Resources
 
 #### 📘 Core Deployment Guides
 
@@ -104,7 +123,7 @@ This site is designed to help you get smart cards, CACs, and YubiKeys working sm
 
 ---
 
-### 🏛️ Government Resources
+### Government Resources
 
 * **[CAC.mil – DoD Common Access Card Portal](https://www.cac.mil/)**
   Official Department of Defense (DoD) site for CAC information, software, and guidance. Managed by the Defense Manpower Data Center (DMDC).
@@ -130,7 +149,7 @@ This site is designed to help you get smart cards, CACs, and YubiKeys working sm
 
 ---
 
-### 🛡️ YubiKey Resources
+### YubiKey Resources
 
 * **[Yubico Official Website](https://www.yubico.com/)**
   The manufacturer of YubiKey security keys supporting OTP, FIDO2, PIV, and Smart Card (CAC) standards.

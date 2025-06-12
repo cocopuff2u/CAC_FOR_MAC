@@ -45,7 +45,7 @@ Anytime you run any scripts, it is recommended to review the code beforehand to 
 :::
 
 **Example of the automated import:**  
-<img src="/img/certificate-guide-img/Example_Import_DoD.png" alt="Import DoD Certs" width="300"/>
+<img src="/img/certificate-guide-img/Example_Import_DoD.webp" alt="Import DoD Certs" width="300"/>
 
 ### Step 2: Verify DoD Certificates in the System Keychain
 
@@ -60,12 +60,12 @@ After the script completes, you should verify that the DoD certificates have bee
 
 | Good (Always Trust) Root CA | Failed Trust Root CA | Root CA (Orange) | Intermediate CA (Blue) |
 |:--------------------------:|:-------------------:|:----------------:|:----------------------:|
-| <img src="/img/certificate-guide-img/CertSmallRoot_UserTrust@2x.png" alt="Root CA Always Trust Example" width="25"/> | <img src="/img/certificate-guide-img/CertSmallRoot_Invalid@2x.png" alt="Root CA Not Trusted Example" width="25"/> | <img src="/img/certificate-guide-img/CertLargeRoot@2x.png" alt="Example Root CA certificate file" width="50"/> | <img src="/img/certificate-guide-img/CertLargeStd@2x.png" alt="Example Intermediate CA certificate file" width="50"/> |
+| <img src="/img/certificate-guide-img/CertSmallRoot_UserTrust.webp" alt="Root CA Always Trust Example" width="25"/> | <img src="/img/certificate-guide-img/CertSmallRoot_Invalid.webp" alt="Root CA Not Trusted Example" width="25"/> | <img src="/img/certificate-guide-img/CertLargeRoot.webp" alt="Example Root CA certificate file" width="50"/> | <img src="/img/certificate-guide-img/CertLargeStd.webp" alt="Example Intermediate CA certificate file" width="50"/> |
 
 If you do not see the certificates in the **System** keychain, re-run the script or consult the troubleshooting section below.
 
 **Example of a successful import:**  
-<img src="/img/certificate-guide-img/Good_Import_Certs.png" alt="Import DoD Certs" width="300"/>
+<img src="/img/certificate-guide-img/Good_Import_Certs.webp" alt="Import DoD Certs" width="300"/>
 
 ---
 
@@ -78,21 +78,21 @@ To manually install the required DoD certificates, you will download them from a
 - Go to **[cyber.mil](https://cyber.mil)**.
   - *Or*, you can [download here](https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/unclass-dod_approved_external_pkis_trust_chains.zip) (official link from cyber.mil) then skip to [step 2](#step-2-locate-extract-and-explore-the-certificates)
   <br/>
-  <img src="/img/certificate-guide-img/step1-cybermil.png" alt="Go to cyber.mil" width="600"/>
+  <img src="/img/certificate-guide-img/step1-cybermil.webp" alt="Go to cyber.mil" width="600"/>
   <br/>
 - In the top menu bar (right), select **PKI-PKE**.  
   <br/>
-  <img src="/img/certificate-guide-img/step1-pkipkemenu.png" alt="Select PKI-PKE" width="400"/>
+  <img src="/img/certificate-guide-img/step1-pkipkemenu.webp" alt="Select PKI-PKE" width="400"/>
   <br/>
-  <img src="/img/certificate-guide-img/step1-pkipkemenu-2.png" alt="Select PKI-PKE" width="400"/>
+  <img src="/img/certificate-guide-img/step1-pkipkemenu-2.webp" alt="Select PKI-PKE" width="400"/>
   <br/>
 - In the left side menu, click on **Document Library**.  
   <br/>
-  <img src="/img/certificate-guide-img/step1-doclibrary.png" alt="Click Document Library" width="200"/>
+  <img src="/img/certificate-guide-img/step1-doclibrary.webp" alt="Click Document Library" width="200"/>
   <br/>
 - Search for **"DoD Approved External PKI Certificates Trust Chains"**.  
   <br/>
-  <img src="/img/certificate-guide-img/step1-dod-external.png" alt="Search for DoD Approved External PKI Certificates Trust Chains" width="400"/>
+  <img src="/img/certificate-guide-img/step1-dod-external.webp" alt="Search for DoD Approved External PKI Certificates Trust Chains" width="400"/>
   <br/>
 
 ---
@@ -118,7 +118,7 @@ By default, your downloaded file will be saved in your **Downloads** folder. How
     `/Users/YOURUSERNAME/Downloads/DoD_Approved_External_PKIs_Trust_Chains.zip`
   </TabItem>
   <TabItem value="Image" label="Example Image">
-    <img src="/img/certificate-guide-img/step2-zip.png" alt="ZIP file in Downloads folder" width="400"/>
+    <img src="/img/certificate-guide-img/step2-zip.webp" alt="ZIP file in Downloads folder" width="400"/>
   </TabItem>
 </Tabs>
 </details>
@@ -138,7 +138,7 @@ When you extract the zip it will create a folder. By default, the extracted fold
     `/Users/YOURUSERNAME/Downloads/DoD_Approved_External_PKIs_Trust_Chains_vXX.X_YYYYMMDD/`
   </TabItem>
   <TabItem value="Image" label="Example Image">
-    <img src="/img/certificate-guide-img/step2-unzip.png" alt="Extracted folder in Downloads" width="400"/>
+    <img src="/img/certificate-guide-img/step2-unzip.webp" alt="Extracted folder in Downloads" width="400"/>
   </TabItem>
 </Tabs>
 </details>
@@ -171,7 +171,7 @@ The `_DoD` folder is located within the extracted `DoD_Approved_External_PKIs_Tr
     `/DoD_Approved_External_PKIs_Trust_Chains_vXX.X_YYYYMMDD/_DoD/`
   </TabItem>
   <TabItem value="Image" label="Example Image">
-    <img src="/img/certificate-guide-img/step2-dodfolder.png" alt="_DoD folder" width="400"/>
+    <img src="/img/certificate-guide-img/step2-dodfolder.webp" alt="_DoD folder" width="400"/>
   </TabItem>
 </Tabs>
 </details>
@@ -199,13 +199,13 @@ Each of these folders contains the certificate files (CAs) that you will import 
     `/Users/YOURUSERNAME/Downloads/DoD_Approved_External_PKIs_Trust_Chains_v11.4_20250324/_DoD/Trust_Anchors_Self-Signed`
   </TabItem>
     <TabItem value="DoD Image" label="Example Image DoD">
-    <img src="/img/certificate-guide-img/step2-unzipped-dod.png" alt="Intermediate CA Certificates" width="400"/>
+    <img src="/img/certificate-guide-img/step2-unzipped-dod.webp" alt="Intermediate CA Certificates" width="400"/>
   </TabItem>
   <TabItem value="Intermediate" label="Example Image Intermediate">
-    <img src="/img/certificate-guide-img/step2-inermediate-ca.png" alt="Intermediate CA Certificates" width="400"/>
+    <img src="/img/certificate-guide-img/step2-inermediate-ca.webp" alt="Intermediate CA Certificates" width="400"/>
   </TabItem>
   <TabItem value="Root" label="Example Image Root">
-    <img src="/img/certificate-guide-img/step2-root-ca.png" alt="Root CA Certificates" width="400"/>
+    <img src="/img/certificate-guide-img/step2-root-ca.webp" alt="Root CA Certificates" width="400"/>
   </TabItem>
 </Tabs>
 </details>
@@ -274,7 +274,7 @@ Below is a table showing what a properly trusted Root CA certificate and a faile
 
 | Good (Always Trust) Root CA | Failed Trust Root CA | Root CA (Orange) | Intermediate CA (Blue) |
 |:--------------------------:|:-------------------:|:----------------:|:----------------------:|
-| <img src="/img/certificate-guide-img/CertSmallRoot_UserTrust@2x.png" alt="Root CA Always Trust Example" width="25"/> | <img src="/img/certificate-guide-img/CertSmallRoot_Invalid@2x.png" alt="Root CA Not Trusted Example" width="25"/> | <img src="/img/certificate-guide-img/CertLargeRoot@2x.png" alt="Example Root CA certificate file" width="50"/> | <img src="/img/certificate-guide-img/CertLargeStd@2x.png" alt="Example Intermediate CA certificate file" width="50"/> |
+| <img src="/img/certificate-guide-img/CertSmallRoot_UserTrust@2x.webp" alt="Root CA Always Trust Example" width="25"/> | <img src="/img/certificate-guide-img/CertSmallRoot_Invalid@2x.webp" alt="Root CA Not Trusted Example" width="25"/> | <img src="/img/certificate-guide-img/CertLargeRoot@2x.webp" alt="Example Root CA certificate file" width="50"/> | <img src="/img/certificate-guide-img/CertLargeStd@2x.webp" alt="Example Intermediate CA certificate file" width="50"/> |
 
 </div>
 
@@ -296,11 +296,11 @@ Below is a table showing what a properly trusted Root CA certificate and a faile
     <tr>
       <td>
         <strong>Example of a trusted certificate:</strong><br/>
-        <img src="/img/certificate-guide-img/step4-trusted.png" alt="Example of Trusted" width="300"/>
+        <img src="/img/certificate-guide-img/step4-trusted.webp" alt="Example of Trusted" width="300"/>
       </td>
       <td>
         <strong>Example of an untrusted certificate:</strong><br/>
-        <img src="/img/certificate-guide-img/step4-untrusted.png" alt="Example of Untrusted" width="300"/>
+        <img src="/img/certificate-guide-img/step4-untrusted.webp" alt="Example of Untrusted" width="300"/>
       </td>
     </tr>
   </table>
@@ -322,7 +322,7 @@ To ensure the certificates are correctly installed:
 You can also test the functionality that requires the DoD certificates (like accessing a DoD website) to verify that the installation was successful.
 
 **Example of a successful import:**  
-<img src="/img/certificate-guide-img/Good_Import_Certs.png" alt="Import DoD Certs" width="300"/>
+<img src="/img/certificate-guide-img/Good_Import_Certs.webp" alt="Import DoD Certs" width="300"/>
 
 ---
 

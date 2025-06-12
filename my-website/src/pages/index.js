@@ -32,6 +32,11 @@ function HomepageHeader() {
   const [showCAC, setShowCAC] = useState(true);
   const [cacFadeOut, setCacFadeOut] = useState(false);
   const [yubiFadeOut, setYubiFadeOut] = useState(false);
+  const [showCard, setShowCard] = useState(false);
+  const [cardFadeOut, setCardFadeOut] = useState(false);
+  const [cardAnimate, setCardAnimate] = useState(false);
+  const [cardBlink, setCardBlink] = useState(false);
+  const [cardSolid, setCardSolid] = useState(false);
 
   useEffect(() => {
     let timeouts = [];
@@ -48,12 +53,17 @@ function HomepageHeader() {
       setShowCAC(true);
       setCacFadeOut(false);
       setYubiFadeOut(false);
+      setShowCard(false);
+      setCardFadeOut(false);
       setAnimate(false);
       setUsbAnimate(false);
       setYubiLightVisible(false);
       setYubiLightSolid(false);
       setBlink(false);
       setSolid(false);
+      setCardAnimate(false);
+      setCardBlink(false);
+      setCardSolid(false);
       timeouts.push(setTimeout(() => {
         if (!isMounted) return;
         setAnimate(true);
@@ -74,7 +84,6 @@ function HomepageHeader() {
           setSolid(false);
           setYubiLightVisible(false);
           setYubiLightSolid(false);
-          // Delay hiding CAC until after all other state resets
           setTimeout(() => {
             if (!isMounted) return;
             setCacFadeOut(true);
@@ -82,8 +91,8 @@ function HomepageHeader() {
               if (!isMounted) return;
               setShowCAC(false);
               yubikeyCycle();
-            }, 500); // Wait for fade out
-          }, 10); // 10ms delay to avoid flicker
+            }, 500);
+          }, 10);
         }, 6000));
       }, 400));
     }
@@ -98,7 +107,11 @@ function HomepageHeader() {
       setYubiLightSolid(false);
       setBlink(false);
       setSolid(false);
-      // Delay showing CAC until after all other state resets
+      setShowCard(false);
+      setCardFadeOut(false);
+      setCardAnimate(false);
+      setCardBlink(false);
+      setCardSolid(false);
       timeouts.push(setTimeout(() => {
         if (!isMounted) return;
         setAnimate(true);
@@ -111,20 +124,62 @@ function HomepageHeader() {
           setYubiLightSolid(false);
           setBlink(false);
           setSolid(false);
-          // Animate back up first
-          setAnimate(false); // triggers upward animation (0.7s)
+          setAnimate(false);
           setUsbAnimate(false);
           setTimeout(() => {
             if (!isMounted) return;
-            setYubiFadeOut(true); // start fade after animation
+            setYubiFadeOut(true);
             setTimeout(() => {
               if (!isMounted) return;
-              setShowCAC(true);
-              cacCycle();
-            }, 300); // fade out duration, was 350
-          }, 500); // upward animation duration
+              setShowCard(true);
+              cardCycle();
+            }, 300);
+          }, 500);
         }, 4800));
       }, 300));
+    }
+
+    function cardCycle() {
+      clearAll();
+      if (!isMounted) return;
+      setShowCard(true);
+      setCardFadeOut(false);
+      setCardAnimate(false);
+      setCardBlink(false);
+      setCardSolid(false);
+      setShowCAC(false);
+      setCacFadeOut(false);
+      setAnimate(false);
+      setBlink(false);
+      setSolid(false);
+      setUsbAnimate(false);
+      setYubiLightVisible(false);
+      setYubiLightSolid(false);
+      timeouts.push(setTimeout(() => {
+        if (!isMounted) return;
+        setCardAnimate(true);
+        timeouts.push(setTimeout(() => isMounted && setCardBlink(true), 1000));
+        timeouts.push(setTimeout(() => {
+          if (!isMounted) return;
+          setCardBlink(false);
+          setCardSolid(true);
+        }, 4000));
+        timeouts.push(setTimeout(() => {
+          if (!isMounted) return;
+          setCardAnimate(false);
+          setCardBlink(false);
+          setCardSolid(false);
+          setTimeout(() => {
+            if (!isMounted) return;
+            setCardFadeOut(true);
+            setTimeout(() => {
+              if (!isMounted) return;
+              setShowCard(false);
+              cacCycle();
+            }, 500);
+          }, 10);
+        }, 6000));
+      }, 400));
     }
 
     cacCycle();
@@ -158,7 +213,7 @@ function HomepageHeader() {
           </div>
         </div>
         <div style={{position: 'relative', display: 'inline-block'}}>
-          {/* Always render both, toggle visibility with CSS */}
+          {/* Always render all three, toggle visibility with CSS */}
           <div
             className={clsx(
               styles.exampleCACImgWrapper,
@@ -187,12 +242,42 @@ function HomepageHeader() {
               <div className={styles.clamshellLight}></div>
             </div>
           </div>
+          {/* New: Example Card Animation */}
+          <div
+            className={clsx(
+              styles.exampleCACImgWrapper,
+              !showCard && styles.hidden,
+              cardFadeOut && styles.fadeOut
+            )}
+          >
+            <img
+              src="/img/Example_Card.webp"
+              alt="Example Card"
+              className={
+                clsx(
+                  styles.exampleCACImgAbsolute,
+                  cardAnimate && styles.exampleCACImgDown
+                )
+              }
+            />
+            <div
+              className={clsx(
+                styles.clamshellWithLight,
+                cardAnimate && styles.clamshellWithLightUp,
+                cardBlink && styles.clamshellWithLightBlink,
+                cardSolid && styles.clamshellWithLightSolid
+              )}
+            >
+              <div className={styles.clamshellLight}></div>
+            </div>
+          </div>
           <span
             className={clsx(
               styles.exampleYubiKeyWrapper,
               animate && styles.exampleYubiKeyDown,
               showCAC && styles.hidden,
-              !animate && yubiFadeOut && styles.fadeOut // Only fade out when not animating down
+              showCard && styles.hidden,
+              !animate && yubiFadeOut && styles.fadeOut
             )}
             style={{position: 'relative', display: 'inline-block'}}
           >
@@ -201,7 +286,7 @@ function HomepageHeader() {
               alt="Example YubiKey"
               className={clsx(
                 styles.exampleCACImgAbsolute,
-                styles.noShadow // <-- add this class
+                styles.noShadow
               )}
             />
             {/* Blinking light in a hole at the top of the YubiKey */}

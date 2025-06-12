@@ -101,12 +101,6 @@ const config = {
           },
           {
             type: 'docSidebar',
-            sidebarId: 'cacGuideSidebar',
-            position: 'left',
-            label: 'CAC Guide',
-          },
-          {
-            type: 'docSidebar',
             sidebarId: 'smartCardGuideSidebar',
             position: 'left',
             label: 'Smart Card Guide',
@@ -145,10 +139,6 @@ const config = {
                 label: 'Certificate Guide',
                 to: '/docs/cac-guide',
               },
-              {
-                label: 'CAC Guide',
-                to: '/docs/cac-guide',
-              },
             ],
           },
           {
@@ -183,6 +173,14 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+      },
+      announcementBar: {
+        id: 'contribute_call',
+        content:
+          '<b>🚀 Looking for people to <a target="_blank" rel="noopener noreferrer" href="https://github.com/cocopuff2u/cac-for-mac">contribute</a>! Join us and help improve CAC For Mac.</b>',
+        backgroundColor: '#2563eb', // A moderate blue that works in both modes
+        textColor: '#ffffff',       // White text for good contrast
+        isCloseable: true,
       },
     }),
 };
