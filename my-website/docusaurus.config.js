@@ -185,8 +185,10 @@ const config = {
       announcementBar: {
         id: 'contribute_call',
         content:
-          '<b>🚀 Looking for people to <a target="_blank" rel="noopener noreferrer" href="https://github.com/cocopuff2u/cac-for-mac">contribute</a>! Join us and help improve CAC For Mac.</b>',
-        backgroundColor: '#2563eb', // A moderate blue that works in both modes
+          //'<b>🚀 Looking for people to <a target="_blank" rel="noopener noreferrer" href="https://github.com/cocopuff2u/cac-for-mac">contribute</a>! Join us and help improve CAC For Mac.</b>',
+          '<b>🚀 We\'re actively building out more pages—thanks for your patience as we grow!</b>',
+        // backgroundColor: '#2563eb', // A moderate blue that works in both modes
+        backgroundColor: '#ff0000', // Changed to red
         textColor: '#ffffff',       // White text for good contrast
         isCloseable: true,
       },
