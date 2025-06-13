@@ -71,6 +71,10 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        gtag: {
+          trackingID: 'YOUR_TRACKING_ID', // Replace with your Google Gtag tracking ID
+          anonymizeIP: false, // Optional: anonymize IP addresses
+        },
       }),
     ],
   ],
@@ -132,12 +136,16 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Introduction',
                 to: '/docs/intro',
               },
               {
                 label: 'Certificate Guide',
-                to: '/docs/cac-guide',
+                to: '/docs/certificate/Certificate-Introduction',
+              },
+              {
+                label: 'Smart Card Guide',
+                to: '/docs/smartcard/Smart-Card-Introduction',
               },
             ],
           },
@@ -146,15 +154,7 @@ const config = {
             items: [
               {
                 label: 'Mac Admins Slack',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
+                href: 'https://macadmins.slack.com/',
               },
             ],
           },
@@ -162,8 +162,16 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'CaC For Mac GitHub',
+                href: 'https://github.com/cocopuff2u/cac-for-mac',
+              },
+              {
+                label: 'Found an Issue?',
+                href: 'https://github.com/cocopuff2u/cac-for-mac/issues',
+              },
+              {
+                label: 'Need Something?',
+                href: 'https://github.com/cocopuff2u/cac-for-mac/discussions',
               },
             ],
           },
@@ -183,6 +191,10 @@ const config = {
         isCloseable: true,
       },
     }),
+
+  plugins: [
+    // Remove the '@docusaurus/plugin-google-gtag' plugin if it exists
+  ],
 };
 
 export default config;

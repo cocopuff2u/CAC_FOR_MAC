@@ -136,24 +136,33 @@ export default function HomepageFeatures() {
         <div style={{height: 40}} />
         <div className={styles.userStepsBg}>
           <div style={{textAlign: 'center', margin: '32px 0 24px 0'}}>
-            <h2>User Steps</h2>
+            <h2>User Guides</h2>
             <p>
-              These steps are designed to help users quickly set up their smart card (CAC, PIV, or similar) on their personal macOS.
+              These guides are designed to help users quickly set up their certificates & smart card (CAC, PIV, or similar) on their personal macOS.
               <br />
-              <a href="/docs/certificate-guide/Certificate-Introduction" target="_blank" rel="noopener noreferrer">
+              <a href="/docs/certificate/Any-Certificates-Users" target="_blank" rel="noopener noreferrer">
                 General Cert Guide
               </a>
               {' | '}
-              <a href="/docs/certificate-guide/DoD-Certificates-Users" target="_blank" rel="noopener noreferrer">
+              <a href="/docs/certificate/DoD-Certificates-Users" target="_blank" rel="noopener noreferrer">
                 DoD Cert Guide
               </a>
               {' | '}
-              <a href="/docs/smart-card-guide/Smart-Card-Introduction" target="_blank" rel="noopener noreferrer">
+              <a href="/docs/certificate/Tools-Apps" target="_blank" rel="noopener noreferrer">
+                Certificate Tools & Apps
+              </a>
+
+              <br/>
+              <a href="/docs/smartcard/Any-SmartCard-Users" target="_blank" rel="noopener noreferrer">
                 General Smart Card Guide
               </a>
               {' | '}
-              <a href="/docs/cac-guide" target="_blank" rel="noopener noreferrer">
+              <a href="/docs/smartcard/DoD-SmartCard-Users" target="_blank" rel="noopener noreferrer">
                 DoD CAC Guide
+              </a>
+              {' | '}
+              <a href="/docs/smartcard/Tools-Apps" target="_blank" rel="noopener noreferrer">
+                Smart Card Tools & Apps
               </a>
             </p>
           </div>
@@ -163,24 +172,34 @@ export default function HomepageFeatures() {
         <div style={{height: 56}} />
         <div className={styles.adminStepsBg}>
           <div style={{textAlign: 'center', margin: '48px 0 32px 0'}}>
-            <h2>Admin Steps</h2>
+            <h2>Admin Guides</h2>
             <p>
-              These steps are designed to help administrators quickly deploy CAC and smart card support for their users.
+              These guides are designed to help administrators quickly deploy certificates & smart card (CAC, PIV, or similar) support for their users.
               <br />
-              <a href="/docs/certificate-guide/Certificate-Introduction" target="_blank" rel="noopener noreferrer">
+              <a href="/docs/certificate/Any-Certificates-Admins" target="_blank" rel="noopener noreferrer">
                 General Cert Guide
               </a>
               {' | '}
-              <a href="/docs/certificate-guide/Tools-Scripts" target="_blank" rel="noopener noreferrer">
+              <a href="/docs/certificate/DoD-Certificates-Admins" target="_blank" rel="noopener noreferrer">
                 DoD Cert Guide
               </a>
               {' | '}
-              <a href="/docs/smart-card-guide/Smart-Card-Introduction" target="_blank" rel="noopener noreferrer">
+              <a href="/docs/certificate/Tools-Scripts" target="_blank" rel="noopener noreferrer">
+                Certificate Tools & Apps
+              </a>
+              <br/>
+
+
+              <a href="/docs/smartcard/Any-SmartCard-Admins" target="_blank" rel="noopener noreferrer">
                 General Smart Card Guide
               </a>
               {' | '}
-              <a href="/docs/admin-guide" target="_blank" rel="noopener noreferrer">
+              <a href="/docs/smartcard/DoD-SmartCard-Admins" target="_blank" rel="noopener noreferrer">
                 DoD CAC Guide
+              </a>
+              {' | '}
+              <a href="/docs/smartcard/Tools-Scripts" target="_blank" rel="noopener noreferrer">
+                Smart Card Tools & Apps
               </a>
             </p>
           </div>

@@ -208,7 +208,7 @@ function HomepageHeader() {
             <Link
               className={`button button--primary button--lg ${styles.cacButton}`}
               to="/docs/cac-tutorial">
-              CAC Guide
+              Smart Card Guide
             </Link>
           </div>
         </div>
