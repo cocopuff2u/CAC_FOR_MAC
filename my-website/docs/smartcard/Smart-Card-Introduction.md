@@ -54,7 +54,7 @@ These benefits make smart cards a trusted solution for secure authentication and
 A **Common Access Card (CAC)** is a smart card issued primarily by the U.S. Department of Defense and other government agencies. It is used for secure identification and authentication, enabling access to government computers, networks, and physical facilities. CACs contain embedded microchips that store certificates and cryptographic keys for secure login and digital signatures.
 
 <p align="center">
-  <img src="/img/smart-card-img/example_cac.webp" alt="Example CAC Card" width="180" /><br/>
+  <img src="/img/smartcard/example_cac.webp" alt="Example CAC Card" width="180" /><br/>
   <em>Example of a Common Access Card (CAC)</em>
 </p>
 
@@ -63,7 +63,7 @@ A **Common Access Card (CAC)** is a smart card issued primarily by the U.S. Depa
 A **YubiKey** is a hardware authentication device produced by Yubico. It supports multiple authentication protocols (such as FIDO2, U2F, PIV, and OTP) and can be used as a smart card for secure login, two-factor authentication, and cryptographic operations. Some government agencies allow YubiKeys to be used in place of traditional CACs or PIV cards for secure access.
 
 <p align="center">
-  <img src="/img/smart-card-img/Example_yubikey.webp" alt="Example YubiKey" width="90" /><br/>
+  <img src="/img/smartcard/Example_yubikey.webp" alt="Example YubiKey" width="90" /><br/>
   <em>Example of a YubiKey</em>
 </p>
 
@@ -74,7 +74,7 @@ A **YubiKey** is a hardware authentication device produced by Yubico. It support
 Unlike CACs and YubiKeys, IC/ICC cards may not follow the DoD's strict standards but still conform to international protocols such as ISO/IEC 7816 or GlobalPlatform. They are widely used in enterprise badge systems, citizen ID cards, EMV banking cards, and secure building access.
 
 <p align="center">
-  <img src="/img/smart-card-img/Example_card.webp" alt="Example IC Card" width="180" /><br/>
+  <img src="/img/smartcard/Example_card.webp" alt="Example IC Card" width="180" /><br/>
   <em>Example of an IC Card</em>
 </p>
 
@@ -102,7 +102,7 @@ Each certificate is issued by a trusted Certificate Authority (CA) and is secure
 
 
 :::note[**Looking for more details on certificates?**]
-See the [Certificate Introduction](../certificate-guide/Certificate-Introduction) for a deeper dive into how certificates work, their types, and how they are used with smart cards.
+_See the [Certificate Introduction](../certificate-guide/Certificate-Introduction) for a deeper dive into how certificates work, their types, and how they are used with smart cards._
 :::
 
 <small>

@@ -247,7 +247,11 @@ Each of these folders contains the certificate files (CAs) that you will import 
 
 - Take the downloaded certificate files (from the extracted folders) and upload them into your MDM according to your MDM provider's documentation.
 - Typically, you will create a new certificate payload or profile and add all required Root and Intermediate CA certificates.
-- Refer to your MDM's official documentation for the exact steps and supported formats.
+- For reference, here are guides for common MDM providers:
+  - [Jamf Pro: Uploading Configuration Profiles](https://learn.jamf.com/en-US/bundle/technical-paper-integrating-ad-cs-current/page/Distributing_a_Certificate_Using_a_Configuration_Profile.html)
+  - [Microsoft Intune: Add or create a device configuration profile](https://learn.microsoft.com/en-us/intune/intune-service/protect/certificates-trusted-root)
+  - [VMware Workspace ONE: Add a Configuration Profile](https://docs.omnissa.com/bundle/workspace-one-access-deployment-with-UEM/page/AddCertificateTemplateinWorkspaceONEUEM.html)
+  - [Kandji: Add and Deploy Configuration Profiles](https://support.kandji.io/kb/certificate-profile)
 
 ### Step 4: Configure Configuration Settings (if available)
 
@@ -265,6 +269,10 @@ Each of these folders contains the certificate files (CAs) that you will import 
 
 - Assign the certificate profile to the relevant device groups or users.
 - Push the profile to all managed devices.
+
+:::important
+_If a certificate already exists on a device and you deploy it via MDM, the MDM-managed certificate will take control and override any local settings for that certificate. When you remove the certificate profile from MDM, the certificate will be completely removed from the device._
+:::
 
 ### Step 6: Verify on Devices
 

@@ -167,3 +167,11 @@ This site is designed to help you get smart cards, CACs, and YubiKeys working sm
 * [YubiKey Compatibility with macOS](https://www.yubico.com/works-with-yubikey/catalog/macos/)
 * [YubiKey for macOS Login Guide](https://support.yubico.com/hc/en-us/articles/360016649059-YubiKey-for-macOS-login)
 * [YubiKey Manager for macOS (Download)](https://www.yubico.com/support/download/yubikey-manager/)
+
+<small>
+:::note[Feedback?]
+_If you found an error, noticed something missing, or need additional help, please [submit feedback on GitHub](https://github.com/cocopuff2u/cac-for-mac/issues) or start a [GitHub discussion](https://github.com/cocopuff2u/cac-for-mac/discussions)._
+
+_If you'd like to contribute improvements to this guide, feel free to submit a [pull request](https://github.com/cocopuff2u/cac-for-mac/pulls) or select `edit this page` below._
+:::
+</small>

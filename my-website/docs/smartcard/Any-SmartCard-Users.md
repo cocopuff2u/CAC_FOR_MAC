@@ -5,7 +5,7 @@ title: General | User
 
 # Smart Card Setup – User Guide
 
-:::danger
+:::warning[Page Development]
 <div align="center">
 
 <img src="/img/page_construction.webp" alt="Example CAC Card" width="180" />
