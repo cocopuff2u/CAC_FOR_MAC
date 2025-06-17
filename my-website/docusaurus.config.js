@@ -116,7 +116,7 @@ const config = {
             label: 'Support',
           },
           {
-            href: 'https://github.com/cocopuff2u/cac-for-mac',
+            href: 'https://github.com/cocopuff2u/CAC_FOR_MAC',
             position: 'right',
             className: 'header-github-link',
             'aria-label': 'GitHub repository',
