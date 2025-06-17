@@ -222,7 +222,7 @@ function HomepageHeader() {
             )}
           >
             <img
-              src="/img/example_cac.webp"
+              src="/img/example_cac_id.webp"
               alt="Example CAC"
               className={
                 clsx(

@@ -22,7 +22,7 @@ This site is for government employees, contractors, IT administrators, and anyon
 A **Common Access Card (CAC)** is a smart card issued primarily by the U.S. Department of Defense and other government agencies. It is used for secure identification and authentication, enabling access to government computers, networks, and physical facilities. CACs contain embedded microchips that store certificates and cryptographic keys for secure login and digital signatures.
 
 <p align="center">
-  <img src="/img/example_cac.webp" alt="Example CAC Card" width="180" /><br/>
+  <img src="/img/example_cac_id.webp" alt="Example CAC Card" width="180" /><br/>
   <em>Example of a Common Access Card (CAC)</em>
 </p>
 
