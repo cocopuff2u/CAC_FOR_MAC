@@ -72,7 +72,7 @@ const config = {
           customCss: './src/css/custom.css',
         },
         gtag: {
-          trackingID: 'YOUR_TRACKING_ID', // Replace with your Google Gtag tracking ID
+          trackingID: 'G-3BYEB7MXSW', // Replace with your Google Gtag tracking ID
           anonymizeIP: false, // Optional: anonymize IP addresses
         },
       }),
