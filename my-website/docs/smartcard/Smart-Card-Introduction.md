@@ -63,7 +63,7 @@ A **Common Access Card (CAC)** is a smart card issued primarily by the U.S. Depa
 A **YubiKey** is a hardware authentication device produced by Yubico. It supports multiple authentication protocols (such as FIDO2, U2F, PIV, and OTP) and can be used as a smart card for secure login, two-factor authentication, and cryptographic operations. Some government agencies allow YubiKeys to be used in place of traditional CACs or PIV cards for secure access.
 
 <p align="center">
-  <img src="/img/smartcard/Example_yubikey.webp" alt="Example YubiKey" width="90" /><br/>
+  <img src="/img/smartcard/example_yubikey.webp" alt="Example YubiKey" width="90" /><br/>
   <em>Example of a YubiKey</em>
 </p>
 
@@ -74,7 +74,7 @@ A **YubiKey** is a hardware authentication device produced by Yubico. It support
 Unlike CACs and YubiKeys, IC/ICC cards may not follow the DoD's strict standards but still conform to international protocols such as ISO/IEC 7816 or GlobalPlatform. They are widely used in enterprise badge systems, citizen ID cards, EMV banking cards, and secure building access.
 
 <p align="center">
-  <img src="/img/smartcard/Example_card.webp" alt="Example IC Card" width="180" /><br/>
+  <img src="/img/smartcard/example_card.webp" alt="Example IC Card" width="180" /><br/>
   <em>Example of an IC Card</em>
 </p>
 

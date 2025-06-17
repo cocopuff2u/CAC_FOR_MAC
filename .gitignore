@@ -22,3 +22,7 @@ my-website/node_modules/.cache/
 
 # Do NOT ignore my-website/package-lock.json
 my-website/package-lock.json
+my-website/node_modules/.cache/webpack/client-development-en/0.pack
+my-website/node_modules/.cache/webpack/client-development-en/1.pack
+my-website/node_modules/.cache/webpack/client-development-en/index.pack
+my-website/node_modules/.cache/webpack/client-development-en/index.pack.old

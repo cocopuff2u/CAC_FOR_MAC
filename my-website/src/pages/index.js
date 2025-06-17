@@ -222,7 +222,7 @@ function HomepageHeader() {
             )}
           >
             <img
-              src="/img/Example_CAC.webp"
+              src="/img/example_cac.webp"
               alt="Example CAC"
               className={
                 clsx(
@@ -251,7 +251,7 @@ function HomepageHeader() {
             )}
           >
             <img
-              src="/img/Example_Card.webp"
+              src="/img/example_card.webp"
               alt="Example Card"
               className={
                 clsx(
@@ -282,7 +282,7 @@ function HomepageHeader() {
             style={{position: 'relative', display: 'inline-block'}}
           >
             <img
-              src="/img/Example_YubiKey.webp"
+              src="/img/example_yubikey.webp"
               alt="Example YubiKey"
               className={clsx(
                 styles.exampleCACImgAbsolute,
