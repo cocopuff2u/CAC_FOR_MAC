@@ -19,6 +19,3 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 my-website/node_modules/.cache/
-
-# Do NOT ignore my-website/package-lock.json
-my-website/package-lock.json
