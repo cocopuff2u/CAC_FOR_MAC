@@ -17,7 +17,7 @@ title: Tools & Apps
   [Download from Mac App Store](https://apps.apple.com/us/app/apple-configurator/id1037126344)  
 
 ### Certificate Request  
-  Certificate Request is a powerful utility for the Mac that allows you to request and install digital certificates directly from Active Directory. This utility automatically discovers all the required information from Active Directory, once you have obtained a kerberos ticket; then, requesting a digital certificate can be as simple as clicking a single button. The digital certificate can be used for configuring wireless, Mail, VPN, and many other services on macOS that require certificates issued by Active Directory.
+  Certificate Request is a powerful utility for the Mac that allows you to request and install digital certificates directly from Active Directory. This utility automatically discovers all the required information from Active Directory, once you have obtained a kerberos ticket; then, requesting a digital certificate can be as simple as clicking a single button. The digital certificate can be used for configuring wireless, Mail, VPN, and many other services on macOS that require certificates issued by Active Directory. <br/>
   [Download from Two Canoes](https://twocanoes.com/products/mac/certificate-request/)
 
 ### Google Chrome  
