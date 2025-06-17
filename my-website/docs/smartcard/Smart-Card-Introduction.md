@@ -102,7 +102,7 @@ Each certificate is issued by a trusted Certificate Authority (CA) and is secure
 
 
 :::note[**Looking for more details on certificates?**]
-_See the [Certificate Introduction](../certificate-guide/Certificate-Introduction) for a deeper dive into how certificates work, their types, and how they are used with smart cards._
+_See the [Certificate Introduction](/docs/certificate/Certificate-Introduction) for a deeper dive into how certificates work, their types, and how they are used with smart cards._
 :::
 
 <small>

@@ -202,12 +202,12 @@ function HomepageHeader() {
           <div className={styles.buttons} style={{display: 'flex', gap: '1rem'}}>
             <Link
               className={`button button--secondary button--lg ${styles.certificateButton}`}
-              to="/docs/intro">
+              to="/docs/certificate/Certificate-Introduction">
               Certificate Guide
             </Link>
             <Link
               className={`button button--primary button--lg ${styles.cacButton}`}
-              to="/docs/cac-tutorial">
+              to="/docs/smartcard/Smart-Card-Introduction">
               Smart Card Guide
             </Link>
           </div>

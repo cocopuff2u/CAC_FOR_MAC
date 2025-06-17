@@ -29,7 +29,7 @@ This method pairs the PIV ID from the CAC to the `AltSecurityIdentities` attribu
 - May still function if the certificate expires <small>_(unverified)_</small>.  
 - If the PIV ID changes (rare, but possible if you receive a new CAC for a new role), it will require an uninstall and reinstall.
 
-<h2>[**Built-In Pairing**](#Built-In-Pairing)</h2>
+<h2>[**Built-In Pairing**](#built-in-pairing)</h2>
 This method uses Apple's built-in pairing functionality to link the certificates from the CAC to the local account.
 
 **Benefits:**  

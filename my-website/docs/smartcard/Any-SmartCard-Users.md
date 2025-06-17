@@ -28,7 +28,7 @@ This method links the PIV ID from your smart card to the `AltSecurityIdentities`
 - May still function if the certificate expires <small>_(unverified)_</small>.  
 - If the PIV ID changes (rare, but possible), it will require an uninstall and reinstall.
 
-<h2>[**Built-In Pairing**](#Built-In-Pairing)</h2>
+<h2>[**Built-In Pairing**](#built-in-pairing)</h2>
 This method uses Apple's built-in pairing functionality to link the certificates from the smart card to the local account.
 
 **Benefits:**  
