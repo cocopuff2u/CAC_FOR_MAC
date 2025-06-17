@@ -3,6 +3,22 @@ sidebar_position: 1
 sidebar: false
 ---
 
+:::warning[Page Development]
+<div align="center">
+
+<img src="/img/page_construction.webp" alt="Example CAC Card" width="180" />
+
+# 🚧 Page In Development 🚧
+
+**This page is not yet complete and may be missing information.**
+
+<em>
+Want to help? Click <strong>Edit this Page</strong> at the bottom to contribute!
+</em>
+
+</div>
+:::
+
 # Guide Introduction
 
 This website offers scripts, guides, tools, and helpful links to assist you in setting up CACs, YubiKeys, or IC/ICC Cards for secure authentication on your devices. Whether you're working from a personal or professional device, you'll find resources tailored for both system administrators and end-users.

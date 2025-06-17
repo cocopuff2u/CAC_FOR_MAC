@@ -1,6 +1,22 @@
 ---
 sidebar_position: 1
 ---
+
+:::warning[Page Development]
+<div align="center">
+
+<img src="/img/page_construction.webp" alt="Example CAC Card" width="180" />
+
+# 🚧 Page In Development 🚧
+
+**This page is not yet complete and may be missing information.**
+
+<em>
+Want to help? Click <strong>Edit this Page</strong> at the bottom to contribute!
+</em>
+
+</div>
+:::
 # Welcome to the CAC for Mac Project
 
 We are a passionate community of Mac administrators dedicated to simplifying and improving access to information about smart cards and certificates on macOS. This project is a collaborative effort to consolidate knowledge, tools, and resources into an easy-to-read and user-friendly format.
