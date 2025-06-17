@@ -5,21 +5,283 @@ title: General | User
 
 # Smart Card Setup – User Guide
 
-:::warning[Page Development]
-<div align="center">
+This guide explains how to pair your smart card with your local user account on a Mac. Pairing lets you use your smart card PIN for logging into your Mac, running `sudo` commands, and other authentication prompts. However, some functions—such as software updates and keychain access—will still require your local account or keychain password.
 
-<img src="/img/page_construction.webp" alt="Example CAC Card" width="180" />
-
-# 🚧 Page In Development 🚧
-
-**This page is not yet complete and may be missing information.**
-
-<em>
-Want to help? Click <strong>Edit this Page</strong> at the bottom to contribute!
-</em>
-
-</div>
+:::important
+- Pairing your smart card only enables PIN-based login and authentication (including `sudo` and some system prompts) to your Mac user account.
+- Pairing is **not required** to access company websites or applications.
+- Usually accessing most company websites and applications requires installing the companies root and intermediate certificates.
+- See the [User Certificates Guide](/docs/certificate/Any-Certificates-Users) for details.
+- Administrator rights are required to pair or unpair a smart card.
 :::
+
+You can pair your smart card to the local account using one of the following methods:
+
+<h2>[**Pair PIV ID**](#pair-piv-id)<small>_(Preferred Method)_</small></h2>
+This method links the PIV ID from your smart card to the `AltSecurityIdentities` attribute of your user account. By default, it assumes your organization uses a PIV ID, but the script can be modified to pair using a different identifier if needed.
+
+**Benefits:**  
+- Works seamlessly with multiple smart cards or when switching smart cards.  
+- No need to re-pair unless PIV ID changes, as the PIV ID typically should remain unchanged
+
+**Downsides:**  
+- May still function if the certificate expires <small>_(unverified)_</small>.  
+- If the PIV ID changes (rare, but possible), it will require an uninstall and reinstall.
+
+<h2>[**Built-In Pairing**](#Built-In-Pairing)</h2>
+This method uses Apple's built-in pairing functionality to link the certificates from the smart card to the local account.
+
+**Benefits:**  
+- Automatically prompts for authentication whenever the smart card is present.  
+- Pairs with the certificates, so if they expire, the pairing will no longer work <small>_(unverified)_</small>.
+
+**Downsides:**  
+- Requires re-pairing if the smart card changes.  
+- Supports only one smart card at a time.  
+- It is recommended to clear all existing pairings before re-pairing.
+
+Both methods achieve the same goal but differ in their suitability for long-term use or handling multiple smart cards.
+
+<small>
+:::note
+_This guide is designed for macOS Monterey and newer (typically the latest supported macOS versions). Older versions may require additional software or different steps. If you need a guide for an older version, please [submit a request on GitHub Discussions](https://github.com/cocopuff2u/cac-for-mac/discussions)._
+:::
+</small>
+
+---
+
+## **Pair PIV ID**
+
+This method retrieves the PIV ID from your smart card and maps it to your local user account. If your organization uses a different identifier, it is recommended to modify the script accordingly to use the appropriate value.
+
+The automated script will:
+- Verify that a smart card is present.
+- Extract the PIV ID from the smart card and securely delete the extracted data locally.
+- Create a mapping using the extracted PIV ID.
+- Assign the mapping to the local user account.
+- Attach the mapping to FileVault (ARM64 devices only).
+
+### Step 1: Run automated script
+
+Copy and paste the code below into your **Terminal**.  
+It will prompt you for your local Mac password to proceed.  
+**You must have administrator rights to run this script:**
+
+```bash
+sudo bash -c "$(curl -s https://raw.githubusercontent.com/cocopuff2u/MacOS_GOV_Scripts/main/Keychain_And_Certificates_Scripts/SmartCard_Mapping.sh)"
+```
+
+:::warning 
+Anytime you run any scripts, it is recommended to review the code beforehand to verify it is not doing anything outside the described steps. You can inspect this one <a href="https://raw.githubusercontent.com/cocopuff2u/MacOS_GOV_Scripts/main/Keychain_And_Certificates_Scripts/SmartCard_Mapping.sh" target="_blank" rel="noopener noreferrer">here</a>
+:::
+
+**Example of the pairing:**  
+<img src="/img/smartcard/smartcard_mapping.webp" alt="Import smart card Certs" width="600"/>
+
+**Tip:** If you experience issues after pairing or unpairing, try rebooting your Mac to ensure changes take effect.
+
+### Step 2: (Optional) Verify PIV ID Pairing
+
+To confirm that the PIV ID has been successfully paired:
+
+1. Remove your smart card from the reader and reinsert it.
+2. Open the **Terminal** and enter the following command:
+
+```bash
+sudo -i
+```
+
+3. You should be prompted to enter your smart card PIN.  
+   - If you are not prompted, try rebooting your system and repeating the steps above.
+   - If you still are not prompted, check that your smart card is detected (see Troubleshooting below).
+
+**Behavior After Pairing:**
+- If the smart card is present during a reboot, the system will prompt you for your smart card PIN instead of your password.  
+- Once the smart card is removed, the system will revert to requiring your local user password for authentication.
+
+Once complete, your smart card will be paired with your local account for authentication.
+
+### Uninstall: PIV ID Pairing
+
+If you need to uninstall the PIV ID pairing, follow these steps:
+
+1. **Download the script**  
+   Download the same script used for pairing by running the following command in your **Terminal**:
+
+   ```bash
+   curl -o ~/Downloads/SmartCard_Mapping.sh https://raw.githubusercontent.com/cocopuff2u/MacOS_GOV_Scripts/main/Keychain_And_Certificates_Scripts/SmartCard_Mapping.sh
+   ```
+
+   :::warning 
+    Anytime you run any scripts, it is recommended to review the code beforehand to verify it is not doing anything outside the described steps. You can inspect this one <a href="https://raw.githubusercontent.com/cocopuff2u/MacOS_GOV_Scripts/main/Keychain_And_Certificates_Scripts/SmartCard_Mapping.sh" target="_blank" rel="noopener noreferrer">here</a>
+    :::
+
+2. **Modify the script**  
+   Navigate to your `Downloads` folder and open the downloaded script in a text editor (e.g., `nano` or `vim`). Locate the `UNINSTALL` variable and change its value from `false` to `true`.  
+   Example using `nano`:
+
+   ```bash
+   cd ~/Downloads
+   nano SmartCard_Mapping.sh
+   ```
+
+   Inside the script, find the following line:
+
+   ```bash
+    # Set to "true" to uninstall (Default is false)
+    UNINSTALL=false
+   ```
+
+   Change it to:
+
+   ```bash
+    # Set to "true" to uninstall (Default is false)
+    UNINSTALL=true
+   ```
+
+   **How to save and exit in `nano`:**
+   - Press `CTRL + O` to save the changes.
+   - Press `Enter` to confirm the file name.
+   - Press `CTRL + X` to exit the editor.
+
+3. **Run the script**  
+   While still in the `Downloads` folder, execute the modified script to uninstall the PIV ID pairing:
+
+   ```bash
+   sudo bash SmartCard_Mapping.sh
+   ```
+
+4. **Verify uninstallation**  
+   After running the script, remove and reinsert your smart card. The system should no longer prompt for your smart card PIN and will revert to using your local user password for authentication.
+   - If you are still prompted for your smart card PIN, reboot your Mac and try again.
+
+---
+
+## **Built-In Pairing**
+
+This method uses the Apple built-in pairing functions to tie the smart card to the local account.
+
+### Step 1: Start Pairing
+
+Insert your smart card into the reader.  
+You should see a prompt in the upper right corner of your screen—click **Pair** to begin the process.
+
+   **Prompt Image:**
+   <img src="/img/smartcard/cac-pair-prompt.webp" alt="Example Pair Prompt" width="300"/>
+
+> **Tip:** If you do not see the prompt, ensure your smart card is fully inserted and detected by the system (see Troubleshooting below).
+
+If the prompt does not appear, you can manually launch the pairing dialog by running the following command in Terminal:
+
+```bash
+/usr/sbin/sc_auth pairing_ui -f
+```
+
+If the pairing prompt still does not appear after running the command:
+- Ensure your smart card is not already paired, either through this method or the PIV ID Pairing method.
+- Make sure your smart card is detected by the Mac (e.g., visible in Keychain Access or System Information). If the smart card is not recognized by the system, the pairing prompt will not appear.
+- You can also try unpairing any existing pairing by running:
+
+  ```bash
+  /usr/sbin/sc_auth unpair
+  ```
+
+  :::warning
+  Running `sc_auth unpair` will unpair **all** smart cards from your account.
+  :::
+
+  Then try launching the pairing dialog again.
+
+### Step 2: Complete Pairing
+
+Follow the on-screen instructions:
+
+1. After clicking **Pair** or forcing the prompt open with the command, you will be prompted to select which Certificate for PIV to pair. Keep an eye on the reader name to verify which PIV to pair if you have multiple smart cards present.
+   <img src="/img/smartcard/cac-select-prompt.webp" alt="Example Select Prompt" width="400"/>
+
+2. Next, you will be asked to enter your Mac username and password.
+
+   <img src="/img/smartcard/login-prompt.webp" alt="Example Login Prompt" width="200"/>
+
+3. You will then be prompted for your smart card PIN.
+
+   <img src="/img/smartcard/cac-pin-prompt.webp" alt="Example Login Prompt" width="200"/>
+
+4. Finally, you will be asked for your keychain password.
+
+   <img src="/img/smartcard/keychain-pair-prompt.webp" alt="Example Login Prompt" width="400"/>
+
+Once complete, your smart card will be paired with your local account for authentication.
+
+### Step 3: (Optional) Verify smart card Pairing
+
+To confirm that the smart card ID has been successfully paired:
+
+1. Remove your smart card from the reader and reinsert it.
+2. Open the **Terminal** and enter the following command:
+
+```bash
+sudo -i
+```
+
+3. You should be prompted to enter your smart card PIN.  
+   - If you are not prompted, try rebooting your system and repeating the steps above.
+   - If you still are not prompted, check that your smart card is detected (see Troubleshooting below).
+
+**Behavior After Pairing:**
+- If the smart card is present during a reboot, the system will prompt you for your smart card PIN instead of your password.  
+- Once the smart card is removed, the system will revert to requiring your local user password for authentication.
+
+### Uninstall: Built-In Pairing
+
+If you need to remove the built-in pairing from your account, run the following command in Terminal:
+
+```bash
+/usr/sbin/sc_auth unpair
+```
+
+:::warning
+Running `sc_auth unpair` will unpair **all** smart cards from your account.
+:::
+
+> **Tip:** After unpairing, reboot your Mac to ensure the changes take effect.
+
+After unpairing, your Mac will revert to using your local user password for authentication.
+
+---
+
+## **Troubleshooting**
+
+If you encounter issues with smart card pairing or authentication, try the following steps:
+
+- **Verify the Mac detects your smart card:**  
+  Open **System Information** (Apple menu > About This Mac > More Info > System Report) and check under the **SmartCards** section to confirm your smart card is detected as a connected device.
+
+- **Check for certificates on the smart card:**  
+  Open **System Information** (Apple menu > About This Mac > More Info > System Report) and check under the **SmartCards** section and look for your PIV ID.
+
+- **Try a different smart card reader:**  
+  Hardware issues with the reader can prevent proper detection. Test with another reader if available.
+
+- **Unpair all smart cards and start fresh:**  
+  Run both uninstall steps for Pair PIV ID and Built-In Pairing to remove any existing pairings:
+  ```bash
+  /usr/sbin/sc_auth unpair
+  ```
+
+- **Reboot your Mac:**  
+  Sometimes a simple restart can resolve detection or pairing issues.
+
+- **Check for macOS updates:**  
+  Go to **System Settings > General > Software Update** and install any available updates. Some smart card issues are resolved by updating macOS.
+
+- **Try another smart card:**  
+  If possible, test with a different smart card to rule out card-specific problems.
+
+- **Check for security or privacy software:**  
+  Some third-party security or privacy tools may interfere with smart card detection. Temporarily disable them if you suspect interference.
+
+If problems persist after these steps, contact your IT support team or have your smart card evaluated for potential issues.
 
 <small>
 :::note[Feedback?]

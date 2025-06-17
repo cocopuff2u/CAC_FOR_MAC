@@ -323,7 +323,7 @@ function HomepageHeader() {
           >
             <iframe
               className={styles.indexCtasGitHubButton}
-              src="https://ghbtns.com/github-btn.html?user=cocopuff2u&amp;repo=MOFA&amp;type=star&amp;count=true&amp;size=large"
+              src="https://ghbtns.com/github-btn.html?user=cocopuff2u&amp;repo=CAC_FOR_MAC&amp;type=star&amp;count=true&amp;size=large"
               width={160}
               height={30}
               title="GitHub Stars"
