@@ -199,7 +199,15 @@ function HomepageHeader() {
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttonsRow}>
-          <div className={styles.buttons} style={{display: 'flex', gap: '1rem'}}>
+          <div
+            className={styles.buttons}
+            style={{
+              display: 'flex',
+              gap: '1rem',
+              justifyContent: 'center',
+              width: '100%',
+            }}
+          >
             <Link
               className={`button button--secondary button--lg ${styles.certificateButton}`}
               to="/docs/certificate/Certificate-Introduction">
