@@ -108,11 +108,17 @@ export default function HomepageFeatures() {
 </p>
 
 <h3>Common Types</h3>
-<ul>
-    <strong>CAC (Common Access Card):</strong> Issued by the U.S. Department of Defense or Government Agencies for secure identification and access. <br></br>
-    <strong>YubiKey (PIV Mode):</strong> A hardware token that emulates a smart card, widely used for secure login and two-factor authentication.<br></br>
+<div style={{ textAlign: 'center', margin: '0 auto', marginBottom: '16px' }}>
+  <div>
+    <strong>CAC (Common Access Card):</strong> Issued by the U.S. Department of Defense or Government Agencies for secure identification and access.
+  </div>
+  <div>
+    <strong>YubiKey (PIV Mode):</strong> A hardware token that emulates a smart card, widely used for secure login and two-factor authentication.
+  </div>
+  <div>
     <strong>ICC/IC Cards:</strong> Standard smart cards used in various industries for secure access and identity verification.
-</ul>
+  </div>
+</div>
 
 
         </div>
