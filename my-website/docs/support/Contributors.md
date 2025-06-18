@@ -1,5 +1,6 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
+title: Project Contributors
 ---
 
 :::warning[Page Development]
@@ -18,30 +19,12 @@ Want to help? Click <strong>Edit this Page</strong> at the bottom to contribute!
 </div>
 :::
 
-# Contributors
+# Project Contributors
 
-Docusaurus is a **static-site-generator** (also called **[Jamstack](https://jamstack.org/)**).
+<small>
+:::note[Feedback?]
+_If you found an error, noticed something missing, or need additional help, please [submit feedback on GitHub](https://github.com/cocopuff2u/CAC_FOR_MAC/issues) or start a [GitHub discussion](https://github.com/cocopuff2u/CAC_FOR_MAC/discussions)._
 
-It builds your site as simple **static HTML, JavaScript and CSS files**.
-
-## Build your site
-
-Build your site **for production**:
-
-```bash
-npm run build
-```
-
-The static files are generated in the `build` folder.
-
-## Deploy your site
-
-Test your production build locally:
-
-```bash
-npm run serve
-```
-
-The `build` folder is now served at [http://localhost:3000/](http://localhost:3000/).
-
-You can now deploy the `build` folder **almost anywhere** easily, **for free** or very small cost (read the **[Deployment Guide](https://docusaurus.io/docs/deployment)**).
+_If you'd like to contribute improvements to this guide, feel free to submit a [pull request](https://github.com/cocopuff2u/CAC_FOR_MAC/pulls) or select `edit this page` below._
+:::
+</small>

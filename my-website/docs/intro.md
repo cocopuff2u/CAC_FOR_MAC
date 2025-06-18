@@ -11,11 +11,11 @@ It is also a place for users to share their own experiences, tips, and solutions
 
 This guide focuses primarily on **macOS**, with some content applicable to Linux or Windows where noted.
 
-## Who is this for?
+## **Who is this for?**
 
 This site is for government employees, contractors, IT administrators, and anyone who uses a CAC, Smart Card, YubiKey, or IC/ICC Card to securely access systems on macOS. If you're trying to get things working—or just make them work better—you’re in the right place.
 
-## What are CACs, YubiKeys, IC/ICC Cards and Smart Cards?
+## **What are CACs, YubiKeys, IC/ICC Cards and Smart Cards?**
 
 **Smart Cards** is a general term for physical cards with embedded integrated circuits (chips) that can process data. On macOS, Apple refers to CACs, PIV cards, and similar devices (including YubiKeys in smart card mode) as "Smart Cards." These cards are used for secure authentication to computers, web resources, and applications, often providing two-factor authentication and cryptographic security.
 
@@ -46,7 +46,7 @@ Unlike CACs and YubiKeys, IC/ICC cards may not follow the DoD's strict standards
  _All CACs are IC cards, but not all IC cards are CACs. IC/ICC is the broader technical classification._
 :::
 
-## What are Certificates?
+## **What are Certificates?**
 
 Certificates are digital documents used to prove identity and establish trust between devices, users, and services. They use cryptographic keys to enable secure communication and authentication. Certificates are a core part of how smart cards, IC Cards, CACs, and YubiKeys work for secure login and access.
 
@@ -68,7 +68,7 @@ There are several types of certificates involved in authentication:
 
 These certificates work together in a chain of trust, allowing your device to verify that a certificate presented by a smart card or website is valid and trusted.
 
-## What problems does this site solve?
+## **What problems does this site solve?**
 
 This site is designed to help you get smart cards, CACs, and YubiKeys working smoothly in your environment—whether you’re an end-user or a system administrator, and whether you’re working on a personal device or managing a professional fleet. Here’s how:
 
@@ -90,7 +90,7 @@ This site is designed to help you get smart cards, CACs, and YubiKeys working sm
 - **Keeping you up-to-date**  
   Stay current with tested solutions and the latest recommendations for secure authentication.
 
-## Learn More & Vendor Links
+## **Learn More & Vendor Links**
 
 ---
 
@@ -170,8 +170,8 @@ This site is designed to help you get smart cards, CACs, and YubiKeys working sm
 
 <small>
 :::note[Feedback?]
-_If you found an error, noticed something missing, or need additional help, please [submit feedback on GitHub](https://github.com/cocopuff2u/cac-for-mac/issues) or start a [GitHub discussion](https://github.com/cocopuff2u/cac-for-mac/discussions)._
+_If you found an error, noticed something missing, or need additional help, please [submit feedback on GitHub](https://github.com/cocopuff2u/CAC_FOR_MAC/issues) or start a [GitHub discussion](https://github.com/cocopuff2u/CAC_FOR_MAC/discussions)._
 
-_If you'd like to contribute improvements to this guide, feel free to submit a [pull request](https://github.com/cocopuff2u/cac-for-mac/pulls) or select `edit this page` below._
+_If you'd like to contribute improvements to this guide, feel free to submit a [pull request](https://github.com/cocopuff2u/CAC_FOR_MAC/pulls) or select `edit this page` below._
 :::
 </small>
