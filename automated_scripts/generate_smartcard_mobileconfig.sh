@@ -36,9 +36,9 @@ echo
 # Sudo/root check
 if [[ $EUID -ne 0 ]]; then
     echo "[WARNING] This script is not running as root (sudo)."
-    echo "Without root privileges, the generated .mobileconfig can only be saved to your user directory."
-    echo "To install system-wide, please re-run this script with 'sudo'."
+    echo "Please re-run this script with 'sudo'."
     echo
+    exit 0
 fi
 
 # Function to prompt for a Yes/No value, with a default
