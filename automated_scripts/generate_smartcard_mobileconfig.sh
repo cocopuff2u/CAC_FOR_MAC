@@ -120,6 +120,7 @@ echo "  [0] Off         - No certificate trust check."
 echo "  [1] Standard    - Validity check only (no revocation checks)."
 echo "  [2] Soft Revoc. - Validity check plus soft revocation: valid unless explicitly rejected by CRL/OCSP. Unavailable or unreachable CRL/OCSP allows this check to succeed."
 echo "  [3] Hard Revoc. - Validity check plus hard revocation: invalid unless CRL/OCSP explicitly says 'This certificate is OK.' Most secure."
+echo "Note: Verify you have TrustedAuthorities in private/etc/SmartcardLogin.plist set before enabling this."
 echo
 checkCertificateTrust=$(default_int "(Enter Value of 0, 1, 2, 3." 0 "0 1 2 3")
 echo "$pattern"
