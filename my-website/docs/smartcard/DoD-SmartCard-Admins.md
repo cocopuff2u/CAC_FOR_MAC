@@ -20,7 +20,7 @@ For maximum security and scalability, devices should be managed with a Mobile De
 If your organization does **not** use MDM, enforcing CAC is not recommended. In this case, refer to the DoD User Guide for alternative approaches.
 :::
 
-## **CAC Enforcement Workflow**
+## **CAC Workflow**
 
 1. **Deploy DoD Certificates to Device:** Use MDM to push required DoD certificates.
 2. **Guide Users Through Forced Pairing:** Require users to pair their smart card with their account before proceeding. This can be enforced via MDM or onboarding scripts.
@@ -29,52 +29,103 @@ If your organization does **not** use MDM, enforcing CAC is not recommended. In 
 5. **Enforce Smart Card Policies:** Once pairing is verified, enable CAC enforcement via MDM.
 6. **Update PAM Configuration:** After smart card enforcement is enabled, update your PAM (Pluggable Authentication Modules) configuration files to support CAC authentication for additional system functions as needed.
 
-## **Enforcing CAC**
+Here's a revised and more polished version of your text for clarity, professionalism, and improved flow:
 
-### Step 1. Prior Requirements
+---
 
-- **Deploy DoD Certificates:** Deploy DoD Certificates to all devices by following the official guide: [DoD Certificates Installation Guide](../certificate/DoD-Certificates-Admins).
-- **Establish CAC Pairing Workflow:** We recommend using the **Pair PIV ID** workflow. This method can be easily pushed to users, requires minimal user interaction, supports CAC swapping, and allows a user to pair multiple CACs. For more details, see the [DoD | User Guide](../smartcard/DoD-SmartCard-Users).
-- **Verify CAC Pairing:** Ensure that CAC pairing is present for each user before enabling enforcement. You can use a script to check for pairing status, such as the example below:
+## **CAC Pairing**
 
-```bash
-#!/bin/zsh
-# Check to see if SmartCard is user paired, and if the SmartcardLogin.plist exists
-# and contains the required formatString for Kerberos
+Before enforcing CAC (Common Access Card) authentication, it's important to establish a workflow for pairing the CAC with the user's account. There are two primary methods for doing this:
 
-# Check for logged in user.
-currentUser=$(scutil <<< "show State:/Users/ConsoleUser" | awk -F': ' '/[[:space:]]+Name[[:space:]]:/ { if ( $2 != "loginwindow" ) { print $2 }}')
+### Pair PIV ID <small>*(Preferred Method)*</small>
+
+This method links the PIV (Personal Identity Verification) identifier from the CAC to the `AltSecurityIdentities` attribute on the user's account.
+
+**Advantages:**
+
+* Seamlessly supports multiple CACs or switching between them.
+* Typically requires no re-pairing unless the user transitions between roles (e.g., from contractor to civilian), as the PIV ID usually remains consistent across CACs.
+
+**Considerations:**
+
+* May still function even if the certificate has expired <small>*(unverified)*</small>.
+* If the PIV ID changes (e.g., due to role transition and a new CAC being issued), re-pairing is required, including uninstall and reinstall.
+
+**Automation Scripts:**
+The following scripts can streamline the PIV pairing process:
+
+* [**SmartCard Mapping with Exempt Accounts**](https://github.com/cocopuff2u/CAC_FOR_MAC/blob/main/scripts/SmartCard_Mapping_With_Exempt.sh)
+
+  * Pairs the PIV ID with the account
+  * Optionally creates exempt accounts
+  * Optionally includes Trusted Authorities
+  * Generates the required `smartcardlogin.plist` file
+
+* [**SmartCard Mapping**](https://github.com/cocopuff2u/CAC_FOR_MAC/blob/main/scripts/SmartCard_Mapping.sh)
+
+  * Pairs the PIV ID with the account
+  * Optionally includes Trusted Authorities
+  * Generates the required `smartcardlogin.plist` file
+
+### Built-In Pairing
+
+This method uses Apple's native pairing tool to associate CAC certificates directly with the local account.
+
+**Advantages:**
+
+* Automatically prompts for authentication when the CAC is inserted
+* Pairing is certificate-based, and will stop working if the certificates expire <small>*(unverified)*</small>
+
+**Considerations:**
+
+* Requires manual re-pairing if the CAC is replaced
+* Only one CAC can be paired at a time
+* Recommended to clear any existing pairings before re-pairing
+
+> ⚠️ *This method cannot be automated and must be performed manually by the user.*
 
 
-# Check if the file /etc/SmartcardLogin.plist exists and contains the Kerberos formatString
-if [[ -f /etc/SmartcardLogin.plist ]]; then
-    formatString=$(plutil -extract "AttributeMapping.dsAttributeString" raw /etc/SmartcardLogin.plist 2>/dev/null)
-    if [[ "$formatString" == "dsAttrTypeStandard:AltSecurityIdentities" ]]; then
-        result="Paired"
-    else
-        result="NotPaired"
-    fi
-else
-    # Check for pairing based on tokenidentity
-    tokenCheck=$(dscl /Local/Default read /Users/"$currentUser" AuthenticationAuthority 2>/dev/null | grep -c tokenidentity)
-    if [[ "$tokenCheck" -gt 0 ]]; then
-        result="Paired"
-    else
-        result="NotPaired"
-    fi
-fi
+## **CAC Enforcement**
 
-# Output the result
-echo "<result>$result</result>"
+### Step 1: Prerequisites
 
-exit 0
-```
+* **Deploy DoD Certificates**
+  Ensure all devices have the necessary DoD root and intermediate certificates installed. Follow the official guide here: [DoD Certificates Installation Guide](../certificate/DoD-Certificates-Admins).
+
+* **Establish a CAC Pairing Workflow**
+  We recommend the **Pair PIV ID** method. This approach is ideal for deployment as it:
+
+  * Can be pushed out centrally with minimal user interaction
+  * Supports CAC replacement and multiple CACs per user
+  * Offers long-term reliability with fewer re-pairing needs
+
+* **Verify CAC Pairing**
+  Before enabling CAC enforcement, confirm that each user has a valid CAC pairing in place.
+
+**Automation Script**
+Use the following script to automatically verify CAC pairing status across user accounts:
+
+🔗 [**SmartCard\_Verify**](https://github.com/cocopuff2u/CAC_FOR_MAC/blob/main/scripts/SmartCard_Verify.zsh)
+This script checks for valid CAC pairing by verifying the presence of the mapped PIV ID and related configuration settings.
 
 ### Step 2. Create a Smart Card Enforcement Profile
 
-To enforce CAC authentication, configure the `com.apple.security.smartcard` policy on managed devices. This is typically accomplished by deploying either a configuration profile (`.mobileconfig`) or a property list (`.plist`) through your MDM solution. Below are example configurations with detailed explanations for each value—adjust these settings as needed for your environment.
+To enable CAC (Common Access Card) authentication, you’ll need to configure the `com.apple.security.smartcard` policy on managed devices. This is typically done by deploying either a configuration profile (`.mobileconfig`) or a property list (`.plist`) via your MDM solution.
 
-See [Apple SmartCard Payload Documentation](https://developer.apple.com/documentation/devicemanagement/smartcard) and [Advanced Smart Card Options](https://support.apple.com/guide/deployment/advanced-smart-card-options-dep7b2ede1e3/web) for more details on each key.
+Below, you’ll find example configurations with detailed explanations for each key. Customize the settings to suit your organization's requirements.
+
+For comprehensive details, refer to the [Apple Smart Card Payload Documentation](https://developer.apple.com/documentation/devicemanagement/smartcard) and [Advanced Smart Card Options](https://support.apple.com/guide/deployment/advanced-smart-card-options-dep7b2ede1e3/web).
+
+💡 **Need a quick way to generate a custom profile?**
+Use the guided script below to create a tailored configuration profile:
+
+```bash
+sudo bash -c "$(curl -s https://raw.githubusercontent.com/cocopuff2u/CAC_FOR_MAC/refs/heads/main/automated_scripts/generate_smartcard_mobileconfig.sh)"
+```
+:::warning 
+Anytime you run any scripts, it is recommended to review the code beforehand to verify it is not doing anything outside the described steps. You can inspect this one <a href="https://raw.githubusercontent.com/cocopuff2u/CAC_FOR_MAC/refs/heads/main/automated_scripts/generate_smartcard_mobileconfig.sh" target="_blank" rel="noopener noreferrer">here</a>
+:::
+
 
 <Tabs>
   <TabItem value="mobileconfig" label="Example .mobileconfig" default>
@@ -453,27 +504,88 @@ Smart card enforcement—especially when combined with compliance requirements�
 
 Test all critical user and admin workflows, including login, sudo, su, and any other authentication-dependent processes. Validate that your configuration meets both operational and compliance requirements before deploying at scale.
 
-## **How to Exempt a User from CAC Enforcement**
+Here’s a clearer and more polished version of your content. The technical meaning is preserved, but the tone and flow are improved for better readability and professionalism:
 
-If you used the CAC PIV ID pairing workflow, the dedicated group called `EXEMPT_GROUP` should already exist on your system. If it does not exist (for example, if you did not use the pairing workflow), you will need to create `/private/etc/SmartcardLogin.plist` and configure it according to [Apple's documentation](https://support.apple.com/guide/deployment/configure-a-mac-smart-cardonly-authentication-depfce8de48b/web).
+---
+
+## **CAC Exemption**
 
 :::important
-_Exempting users from CAC enforcement should be reserved for admin or service accounts only, to provide a backup option in case of lockout or for troubleshooting. For regular local users, it is more secure to remove the enforcement policy via MDM rather than adding them to the exempt group. This approach maintains a strong security posture and minimizes unnecessary exceptions._
+_Exempting users from CAC enforcement should be limited to administrative or service accounts. These exemptions serve as a contingency for troubleshooting or recovery in the event of a lockout. For standard users, it is more secure to remove the enforcement policy via MDM instead of manually adding them to the exemption group. This approach helps maintain a stronger overall security posture and reduces unnecessary exceptions._
 
-**Security Note:**  
-_Admin or service accounts in the exempt group should have additional protections, such as a disabled ("dead") password, a password that is rotated frequently, or other controls to ensure the account cannot be easily used for regular logins. You may also consider setting these accounts as standard (non-admin) users unless elevated privileges are absolutely required. These measures reduce the risk of these accounts being exploited as a bypass._
+**Security Best Practice:**  
+_Accounts placed in the exempt group—especially admin or service accounts—should include additional safeguards such as:_
+
+- _A disabled or expired ("dead") password_
+
+- _Frequent password rotation_
+
+- _Limited privileges (e.g., demoting to standard user unless admin rights are strictly necessary)_
+
+_These measures help prevent exempted accounts from being exploited as a backdoor to bypass CAC authentication._
 :::
 
-To exempt a user from CAC enforcement, add them to the `EXEMPT_GROUP`. The script below checks for the existence of the group, creates it if necessary, and adds the specified user.
+If you used the [SmartCard Mapping script](https://github.com/cocopuff2u/CAC_FOR_MAC/blob/main/scripts/SmartCard_Mapping.sh) **without** the exemption workflow, or the user manually paired the CAC, the `EXEMPT_GROUP` may not be present. In this case, you’ll need to configure exemptions manually by creating the `/private/etc/SmartCardLogin.plist` file, following [Apple’s official guidance](https://support.apple.com/guide/deployment/configure-a-mac-smart-cardonly-authentication-depfce8de48b/web), or by using the script below.
+
+For a streamlined process, you can also use the [SmartCard Mapping with Exempt Script](https://github.com/cocopuff2u/CAC_FOR_MAC/blob/main/scripts/SmartCard_Mapping_With_Exempt.sh), which automatically:
+
+* Creates the exemption group
+* Adds the user
+* Maps their PIV certificate
+
+### Create `SmartCardLogin.plist`
+
+Use this script to generate the required `SmartCardLogin.plist` file:
 
 ```bash
 #!/bin/bash
-# Exempt a user from CAC enforcement by adding them to the EXEMPT_GROUP
 
-EXEMPT_USER="username_here"   # <-- Set this to the username you want to exempt
+PLIST_PATH="/private/etc/SmartCardLogin.plist"
+
+sudo tee "$PLIST_PATH" > /dev/null <<'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>AttributeMapping</key>
+    <dict>
+        <key>dsAttributeString</key>
+        <string>dsAttrTypeStandard:AltSecurityIdentities</string>
+        <key>fields</key>
+        <array>
+            <string>NT Principal Name</string>
+        </array>
+        <key>formatString</key>
+        <string>Kerberos:\$1</string>
+    </dict>
+    <key>TrustedAuthorities</key>
+    <array>
+        <string>SHA256_HASH_OF_CERTDOMAIN_1</string>
+        <string>SHA256_HASH_OF_CERTDOMAIN_2</string>
+    </array>
+    <key>NotEnforcedGroup</key>
+    <string>EXEMPT_GROUP</string>
+</dict>
+</plist>
+EOF
+
+sudo chown root:wheel "$PLIST_PATH"
+sudo chmod 644 "$PLIST_PATH"
+
+echo "✅ SmartCardLogin.plist created successfully at $PLIST_PATH"
+```
+
+### Create the Exempt Group and Add a User
+
+To manually create the exemption group and assign a user to it, use the following:
+
+```bash
+#!/bin/bash
+
+EXEMPT_USER="EXEMPT_USER"   # <-- Replace with the username to exempt
 EXEMPT_GROUP="EXEMPT_GROUP"
 
-# Check if the group exists, create if it does not
+# Create the group if it doesn't already exist
 if ! dscl . -read /Groups/"$EXEMPT_GROUP" &>/dev/null; then
     sudo dscl . -create /Groups/"$EXEMPT_GROUP"
     sudo dscl . -create /Groups/"$EXEMPT_GROUP" RealName "CAC Exempt Users"
@@ -485,8 +597,16 @@ fi
 sudo dseditgroup -o edit -a "$EXEMPT_USER" -t user "$EXEMPT_GROUP"
 ```
 
-- Set the `EXEMPT_USER` variable at the top of the script to the username you wish to exempt.
-- This script will ensure the group exists and add the user to it.
+**Usage Tips:**
+
+* Replace `EXEMPT_USER` with the actual username to be exempted.
+* This script will create the group if it does not already exist and add the user to it.
+* Anyone user in that group will be exempt from CAC enforcement
+
+**Recommendation:**
+Whenever possible, use the [SmartCard Mapping with Exempt Script](https://github.com/cocopuff2u/CAC_FOR_MAC/blob/main/scripts/SmartCard_Mapping_With_Exempt.sh) to simplify the process and reduce manual errors.
+
+---
 
 ## **Uninstall PAM Configuration**
 

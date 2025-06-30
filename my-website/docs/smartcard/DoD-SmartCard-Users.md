@@ -172,7 +172,7 @@ You should see a prompt in the upper right corner of your screen—click **Pair*
 
 > **Tip:** If you do not see the prompt, ensure your CAC is fully inserted and detected by the system (see Troubleshooting below).
 
-If the prompt does not appear, you can manually launch the pairing dialog by running the following command in Terminal:
+If the pairing prompt does not appear, or if it disappears before you can click it, you can manually open the pairing dialog by running the following command in Terminal:
 
 ```bash
 /usr/sbin/sc_auth pairing_ui -f

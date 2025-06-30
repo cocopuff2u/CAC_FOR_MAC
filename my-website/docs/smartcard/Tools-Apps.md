@@ -50,7 +50,7 @@ Want to help? Click <strong>Edit this Page</strong> at the bottom to contribute!
 
 ## **Open Source Projects**
 
-### (User) Bobertio - SC_Menu
+### (User) Boberito - SC_Menu
 
   *Simple smartcard menu item, to view certificates and information about the smart card*<br/>
   [https://github.com/boberito/sc_menu](https://github.com/boberito/sc_menu)  ![](https://img.shields.io/github/stars/boberito/sc_menu?style=social)
