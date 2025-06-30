@@ -66,7 +66,7 @@ ENABLE_LOGGING=true
 
 # Set to "false" to use SwiftDialog for dialogs instead of OSAScript (Default is true)
 # Its recommended to use swiftDialog for better user experience
-USE_OSASCRIPT=false
+USE_OSASCRIPT=true
 
 ####################################################################################################
 #
