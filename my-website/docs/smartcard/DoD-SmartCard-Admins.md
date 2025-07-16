@@ -467,7 +467,7 @@ Below are guides for uploading configuration profiles and scripts with popular M
 ### Step 5. Enforce Smart Card Policies
 
 :::warning
-Before enforcing smart card policies, ensure every user has a CAC paired with their account **or** that you have an [exempt admin account available](#how-to-exempt-a-user-from-cac-enforcement). Failing to do so may result in being locked out of the device.
+Before enforcing smart card policies, ensure every user has a CAC paired with their account **or** that you have an [exempt admin account available](#create-the-exempt-group-and-add-a-user). Failing to do so may result in being locked out of the device.
 :::
 
 - Assign the smart card enforcement profile (`.mobileconfig` or `.plist`) to the appropriate device groups or users in your MDM.
