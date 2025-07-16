@@ -109,11 +109,15 @@ const config = {
             position: 'left',
             label: 'Smart Card Guide',
           },
-          {
-            type: 'docSidebar',
-            sidebarId: 'docsSidebar',
+                    {
+            to: 'support',
             position: 'right', // Use 'left' for consistency
             label: 'Support',
+          },
+          {
+            to: 'about', 
+            position: 'right', // Use 'left' for consistency
+            label: 'About',
           },
           {
             href: 'https://github.com/cocopuff2u/CAC_FOR_MAC',
@@ -163,15 +167,15 @@ const config = {
             items: [
               {
                 label: 'CaC For Mac GitHub',
-                href: 'https://github.com/cocopuff2u/cac-for-mac',
+                href: 'https://github.com/cocopuff2u/CAC_FOR_MAC',
               },
               {
                 label: 'Found an Issue?',
-                href: 'https://github.com/cocopuff2u/cac-for-mac/issues',
+                href: 'https://github.com/cocopuff2u/CAC_FOR_MAC/issues',
               },
               {
                 label: 'Need Something?',
-                href: 'https://github.com/cocopuff2u/cac-for-mac/discussions',
+                href: 'https://github.com/cocopuff2u/CAC_FOR_MAC/discussions',
               },
             ],
           },
@@ -185,11 +189,11 @@ const config = {
       announcementBar: {
         id: 'contribute_call',
         content:
-          //'<b>🚀 Looking for people to <a target="_blank" rel="noopener noreferrer" href="https://github.com/cocopuff2u/cac-for-mac">contribute</a>! Join us and help improve CAC For Mac.</b>',
-          '<b>🚧  We\'re actively building out more pages—thanks for your patience as we grow! 🚧</b>',
-        // backgroundColor: '#2563eb', // A moderate blue that works in both modes
-        backgroundColor: '#ffff00', // Changed to red
-        textColor: '#000000',       // White text for good contrast
+          '<b>🚀 Looking for people to <a target="_blank" rel="noopener noreferrer" href="https://github.com/cocopuff2u/CAC_FOR_MAC">contribute</a>! Join us and help improve CAC For Mac.</b>',
+          //'<b>🚧  We\'re actively building out more pages—thanks for your patience as we grow! 🚧</b>',
+        backgroundColor: '#2563eb', // A moderate blue that works in both modes
+        // backgroundColor: '#ffff00', // Changed to red
+        textColor: '#ffffff',       // White text for good contrast
         isCloseable: true,
       },
     }),

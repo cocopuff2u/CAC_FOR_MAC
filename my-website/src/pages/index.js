@@ -321,8 +321,10 @@ function HomepageHeader() {
           <span className={styles.usbPort}></span>
           <div className={styles.cacReaderLight}></div>
         </div>
-        <div style={{textAlign: 'center', marginTop: 24, fontWeight: 'bold'}}>
-          Support this project
+        <div style={{textAlign: 'center', marginTop: 24, fontWeight: 'bold', fontSize: '1.3em'}}>
+          <span role="img" aria-label="star">⭐️</span>
+          <span style={{margin: '0 12px'}}>Support this project</span>
+          <span role="img" aria-label="star">⭐️</span>
         </div>
         <div style={{width: '100%', display: 'flex', justifyContent: 'center', marginTop: 8}}>
           <div
