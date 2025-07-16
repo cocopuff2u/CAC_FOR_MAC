@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import './About.css';
+import './about.css';
 
 export default function Support() {
   return (

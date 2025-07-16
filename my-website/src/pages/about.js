@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import './About.css'; // Add this import
+import './about.css'; // Add this import
 
 export default function Hello() {
   return (
